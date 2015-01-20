@@ -1,0 +1,11 @@
+jquery.min.js                    jq库文件
+jquery.sgallery.js               图片切换
+jquery.suggest.js                自动完成提升 搜索用
+jQuery.Switchable            是一款整合了Tabs、Slide、Scrollable等常见UI组件的jQuery插件
+jquery.tools.min.js             jQuery Tools是一个当前网站开发中最最常用的UI组件集合，包括：Tab、工具提示ToolTip、窗口滚动、Overlap、Expose和Flash嵌入，jQuery Tools只有5.8k大小。
+jquery.treetable.js             树形菜单效果
+jquery.treeview.js               伸缩树形菜单
+jquery.treeview.async.js         树形菜单效果需要jquery.treeview.js支持
+jquery.imgpreview.js    图片预览效果
+jquery.cookie.js                 jq操作cookie的插件
+jquery.ad-gallery         一款基于jQuery的幻灯片，JS图片切换，带缩略图，带左右控制按钮，采用淡入淡出的切换方式。

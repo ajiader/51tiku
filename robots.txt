@@ -1,0 +1,13 @@
+#
+# robots.txt
+#
+User-agent: * 
+Disallow: /caches
+
+Disallow: /api
+
+
+Disallow: http://www.renshikaoshi.net/*?*
+
+
+Disallow: http://www.renshikaoshi.net/question/?*

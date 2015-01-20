@@ -1,0 +1,70 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^statics/(.*) statics/$1 [L]
+
+
+
+#站点地图
+RewriteRule ^sitemaps.html$  goshouye.php?m=content&c=index&a=sitemaps [L]
+
+
+RewriteRule ^list-([0-9]+)-([0-9]+).html goshouye.php?m=content&c=index&a=lists&catid=$1&page=$2 [L]
+#RewriteRule ^/gwy/ goshouye.php?m=content&c=index&a=lists&catid=6 [L]
+#RewriteRule ^(.*)/273.html  old/$1/273.html [L]
+
+RewriteRule ^(jsj|En|zyzg)(.*)/(.*)/list.html$  goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&%{QUERY_STRING} [L]
+
+#kaozc专家页面
+RewriteRule ^(jsj|En|zyzg)/zhuanjia/t_([0-9]+)_([0-9]+).html goshouye.php?m=content&c=index&a=zhuanjia_list&tid=$2&page=$3&catdir=$1 [L]
+RewriteRule ^(jsj|En|zyzg)/zhuanjia/ goshouye.php?m=content&c=index&a=zhuanjia&catdir=$1 [L]
+
+#考试时间查询
+RewriteRule ^(jsj|En|zyzg)/kaoshichaxun/ goshouye.php?m=content&c=index&a=kaoshichaxun&catdir=$1 [L]
+RewriteRule ^kaoshichaxun/ goshouye.php?m=content&c=index&a=kaoshichaxun [L]
+
+
+RewriteRule ^(En|jsj|zyzg)(.*)/(.*)/mk(.*)/$ goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&mpinyin=$4 [L]
+
+#地方站 31省市
+        RewriteRule ^(En|jsj)/(beijing|shanghai|tianjin|chongqing|hebei|shanxi|neimenggu|liaoning|jilin|heilongjiang|jiangsu|zhejiang|anhui|fujian|jiangxi|shandong|henan|hubei|hunan|guangdong|guangxi|hainan|sichuan|guizhou|yunnan|xizang|shanxis|gansu|qinghai|ningxia|xinjiang)(.*)/$ goshouye.php?m=content&c=city&pinyin=$2$3&catdir=$1 [L]
+
+#栏目列表页面
+
+#栏目伪静态
+#大类列表分页规则
+	
+RewriteRule ^(rmzt|pxb)/([0-9]+).html goshouye.php?m=content&c=index&a=lists&categorydir=$1&page=$2 [L]
+
+RewriteRule ^(jsj)/([0-9]+).html goshouye.php?m=content&c=index&a=lists&categorydir=$1&page=$2 [L]
+
+
+
+
+
+
+
+
+RewriteRule ^list-([0-9]+)-([0-9]+).html goshouye.php?m=content&c=index&a=lists&catid=$1&page=$2 [L]
+RewriteRule ^tag-([^\.]*)-([0-9]+)-([0-9]+).html goshouye.php?m=content&c=tag&catid=$2&tag=$1&page=$3 [L]
+RewriteRule ^comment-([0-9]+)-([0-9]+)-([0-9]+).html goshouye.php?m=comment&c=index&a=init&commentid=content_$1-$2-$3 [L]
+RewriteRule ^specials/gwy/ goshouye.php?m=special&c=index&a=type&specialid=1&typeid=53 [L]
+RewriteRule ^tiku-([0-9]+)-([0-9]+)-([0-9]+).html goshouye.php?m=content&c=index&a=show&catid=$1&id=$2&page=$3 [L]
+
+#tags关键词
+RewriteRule ^tags-(.*)_([0-9]+)_([0-9]+).html goshouye.php?m=content&c=tag&catid=$2&tag=$1&page=$3  [L]
+
+
+
+
+
+
+
+#自定义seo推广页面
+RewriteRule ^r/(.*)/ goshouye.php?m=diypage&c=index&a=init&dirname=$1 [L]
+RewriteRule ^/$  goshouye.php [L]
+
+
+#ajax页面调用
+RewriteRule ^ajax_(.*).html goshouye.php?m=ajax&a=$1 [L]
+</IfModule>
