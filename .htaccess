@@ -1,43 +1,32 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 
-RewriteRule ^statics/(.*) statics/$1 [L]
+#RewriteRule ^statics/(.*) statics/$1 [L]
 
 
 
-#Õ¾µãµØÍ¼
+#ç«™ç‚¹åœ°å›¾
 RewriteRule ^sitemaps.html$  goshouye.php?m=content&c=index&a=sitemaps [L]
 
 
 RewriteRule ^list-([0-9]+)-([0-9]+).html goshouye.php?m=content&c=index&a=lists&catid=$1&page=$2 [L]
-#RewriteRule ^/gwy/ goshouye.php?m=content&c=index&a=lists&catid=6 [L]
-#RewriteRule ^(.*)/273.html  old/$1/273.html [L]
-
-RewriteRule ^(jsj|En|zyzg)(.*)/(.*)/list.html$  goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&%{QUERY_STRING} [L]
-
-#kaozc×¨¼ÒÒ³Ãæ
-RewriteRule ^(jsj|En|zyzg)/zhuanjia/t_([0-9]+)_([0-9]+).html goshouye.php?m=content&c=index&a=zhuanjia_list&tid=$2&page=$3&catdir=$1 [L]
-RewriteRule ^(jsj|En|zyzg)/zhuanjia/ goshouye.php?m=content&c=index&a=zhuanjia&catdir=$1 [L]
-
-#¿¼ÊÔÊ±¼ä²éÑ¯
-RewriteRule ^(jsj|En|zyzg)/kaoshichaxun/ goshouye.php?m=content&c=index&a=kaoshichaxun&catdir=$1 [L]
-RewriteRule ^kaoshichaxun/ goshouye.php?m=content&c=index&a=kaoshichaxun [L]
+RewriteRule ^(bkzn)(.*)/(.*)/list.html$  goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&%{QUERY_STRING} [L]
 
 
-RewriteRule ^(En|jsj|zyzg)(.*)/(.*)/mk(.*)/$ goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&mpinyin=$4 [L]
 
-#µØ·½Õ¾ 31Ê¡ÊĞ
+
+
+#åœ°æ–¹ç«™ 31çœå¸‚
         RewriteRule ^(En|jsj)/(beijing|shanghai|tianjin|chongqing|hebei|shanxi|neimenggu|liaoning|jilin|heilongjiang|jiangsu|zhejiang|anhui|fujian|jiangxi|shandong|henan|hubei|hunan|guangdong|guangxi|hainan|sichuan|guizhou|yunnan|xizang|shanxis|gansu|qinghai|ningxia|xinjiang)(.*)/$ goshouye.php?m=content&c=city&pinyin=$2$3&catdir=$1 [L]
 
-#À¸Ä¿ÁĞ±íÒ³Ãæ
+#æ ç›®åˆ—è¡¨é¡µé¢
 
-#À¸Ä¿Î±¾²Ì¬
-#´óÀàÁĞ±í·ÖÒ³¹æÔò
+#æ ç›®ä¼ªé™æ€
+#å¤§ç±»åˆ—è¡¨åˆ†é¡µè§„åˆ™
 	
-RewriteRule ^(rmzt|pxb)/([0-9]+).html goshouye.php?m=content&c=index&a=lists&categorydir=$1&page=$2 [L]
-
-RewriteRule ^(jsj)/([0-9]+).html goshouye.php?m=content&c=index&a=lists&categorydir=$1&page=$2 [L]
-
+RewriteRule ^(bkzn)/([0-9]+).html goshouye.php?m=content&c=index&a=lists&categorydir=$1&page=$2 [L]
+RewriteRule ^(bkzn)(.*)/(.*)/$  goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3 [L]
+RewriteRule ^(bkzn)/$ goshouye.php?m=content&c=index&a=lists&categorydir=$1 [L]
 
 
 
@@ -51,7 +40,7 @@ RewriteRule ^comment-([0-9]+)-([0-9]+)-([0-9]+).html goshouye.php?m=comment&c=in
 RewriteRule ^specials/gwy/ goshouye.php?m=special&c=index&a=type&specialid=1&typeid=53 [L]
 RewriteRule ^tiku-([0-9]+)-([0-9]+)-([0-9]+).html goshouye.php?m=content&c=index&a=show&catid=$1&id=$2&page=$3 [L]
 
-#tags¹Ø¼ü´Ê
+#tagså…³é”®è¯
 RewriteRule ^tags-(.*)_([0-9]+)_([0-9]+).html goshouye.php?m=content&c=tag&catid=$2&tag=$1&page=$3  [L]
 
 
@@ -60,11 +49,11 @@ RewriteRule ^tags-(.*)_([0-9]+)_([0-9]+).html goshouye.php?m=content&c=tag&catid
 
 
 
-#×Ô¶¨ÒåseoÍÆ¹ãÒ³Ãæ
+#è‡ªå®šä¹‰seoæ¨å¹¿é¡µé¢
 RewriteRule ^r/(.*)/ goshouye.php?m=diypage&c=index&a=init&dirname=$1 [L]
-RewriteRule ^/$  goshouye.php [L]
+RewriteRule ^$  goshouye.php [L]
 
 
-#ajaxÒ³Ãæµ÷ÓÃ
+#ajaxé¡µé¢è°ƒç”¨
 RewriteRule ^ajax_(.*).html goshouye.php?m=ajax&a=$1 [L]
 </IfModule>
