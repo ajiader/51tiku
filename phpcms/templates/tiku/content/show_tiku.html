@@ -10,6 +10,7 @@
 <link type="text/css" rel="stylesheet" href="/statics/renshikaoshi/css/cykzc.css" />
 <link type="text/css" rel="stylesheet" href="/statics/en/css/zcenglishnew.css" />
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script src="/statics/js/jquery.cookie.js"></script>
 <style >
 .hide{display:none; }
 </style>
@@ -28,7 +29,7 @@ foreach($andata as $key => $value)
    }
 }
 //print_R($answerow);
-
+print_R($_COOKIE);
 ?>
 <div class="onlinequizct">
 <h2>{$title}</h2>
@@ -50,10 +51,12 @@ $(document).ready(function(){
     $('#jiexi').click(function(){
 		right_answer = '{$right_answer}';
 		xx = $("input[name='answer']:checked").val(); 
+		if(xx == null){alert('您还没有做出选择！'); return false;}
 		if(right_answer == xx){ 
 		    $('#result').html('<span style="color:green;font-weight:bold">您的选择是'+xx+',恭喜您回答正确！</span>');
 		}else{
 		     $('#result').html('<span style="color:red;font-weight:bold">您的选择是'+xx+',回答错误!正确答案是:'+right_answer+'</span>');
+		     $.cookie('error_ids[]', '{$id}', { expires: 7 });
 		}
 		$('#jiexi').addClass("hide");
 		$('#content').removeClass("hide");
