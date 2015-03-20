@@ -67,6 +67,7 @@ include $this->admin_tpl('header','admin');?>
             <th width="37"><?php echo L('listorder');?></th>
             <th width="40">ID</th>
 			<th><?php echo L('title');?></th>
+			<?php if($modelid==20): ?><th>答案</th><?php endif;?>
             <th width="40"><?php echo L('hits');?></th>
             <th width="70"><?php echo L('publish_user');?></th>
             <th width="118"><?php echo L('updatetime');?></th>
@@ -102,6 +103,7 @@ include $this->admin_tpl('header','admin');?>
 		} else {
 			echo '<a href="javascript:;" onclick=\'window.open("?m=content&c=content&a=public_preview&steps='.$steps.'&catid='.$catid.'&id='.$r['id'].'","manage")\'>';
 		}?><span<?php echo title_style($r['style'])?>><?php echo $r['title'];?></span></a> <?php if($r['thumb']!='') {echo '<img src="'.IMG_PATH.'icon/small_img.gif" title="'.L('thumb').'">'; } if($r['posids']) {echo '<img src="'.IMG_PATH.'icon/small_elite.gif" title="'.L('elite').'">';} if($r['islink']) {echo ' <img src="'.IMG_PATH.'icon/link.png" title="'.L('islink_url').'">';}?></td>
+		<?php if($modelid==20): ?><td align="center"><a href="javascript:answer_edit(<?php echo $r['id'];?>,'<?php echo $r['title'];?>')">答案</a></td><?php endif;?>
 		<td align='center' title="<?php echo L('today_hits');?>：<?php echo $hits_r['dayviews'];?>&#10;<?php echo L('yestoday_hits');?>：<?php echo $hits_r['yestodayviews'];?>&#10;<?php echo L('week_hits');?>：<?php echo $hits_r['weekviews'];?>&#10;<?php echo L('month_hits');?>：<?php echo $hits_r['monthviews'];?>"><?php echo $hits_r['views'];?></td>
 		<td align='center'>
 		<?php
@@ -113,7 +115,7 @@ include $this->admin_tpl('header','admin');?>
 		}
 		?></td>
 		<td align='center'><?php echo format::date($r['updatetime'],1);?></td>
-		<td align='center'><a href="javascript:;" onclick="javascript:openwinx('?m=content&c=content&a=edit&catid=<?php echo $catid;?>&id=<?php echo $r['id']?>','')"><?php echo L('edit');?></a> | <a href="javascript:view_comment('<?php echo id_encode('content_'.$catid,$r['id'],$this->siteid);?>','<?php echo safe_replace($r['title']);?>')"><?php echo L('comment');?></a></td>
+		<td align='center'><a href="javascript:;" onclick="javascript:openwinx('?m=content&c=content&a=edit&catid=<?php echo $catid;?>&id=<?php echo $r['id']?>','')"><?php echo L('edit');?></a> | <a href="javascript:view_comment('<?php echo id_encode('content_'.$catid,$r['id'],$this->siteid);?>','<?php echo safe_replace($r['title']);?>')"><?php echo L('comment');?></a> </td>
 	</tr>
      <?php }
 	}
@@ -148,6 +150,11 @@ include $this->admin_tpl('header','admin');?>
 <script language="javascript" type="text/javascript" src="<?php echo JS_PATH?>cookie.js"></script>
 <script type="text/javascript"> 
 <!--
+function answer_edit(id, name) {
+	window.top.art.dialog({id:'answer_edit'}).close();
+	window.top.art.dialog({title:'编辑答案《'+name+'》',id:'answer_edit',iframe:'?m=content&c=answer&a=init&qid='+id,width:'580',height:'420'}, function(){var d = window.top.art.dialog({id:'edit'}).data.iframe;d.document.getElementById('dosubmit').click();return false;}, function(){window.top.art.dialog({id:'edit'}).close()});
+}
+
 function push() {
 	var str = 0;
 	var id = tag = '';

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
+<meta name="baidu-site-verification" content="uhu52zagQh" />
+<link type="text/css" rel="stylesheet" href="/statics/renshikaoshi/css/kzcty-css.css" />
+<link type="text/css" rel="stylesheet" href="/statics/renshikaoshi/css/cykzc.css" />
+<link type="text/css" rel="stylesheet" href="/statics/en/css/zcenglishnew.css" />
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<style >
+.hide{display:none; }
+</style>
+</head>
+
+<body>
+{php $ZM = range(A,Z);}
+{pc:get sql="SELECT * FROM phpcms_tiku_answer where qid=$id" cache="0"  dbsource="" return="andata"}
+<?php
+shuffle($andata);
+foreach($andata as $key => $value)
+{
+   $answerow[$ZM[$key]] =  $value;
+   if($value['right'] == 1){
+       $right_answer = $ZM[$key];
+   }
+}
+//print_R($answerow);
+
+?>
+<div class="onlinequizct">
+<h2>{$title}</h2>
+<ul>
+{loop $answerow $k $v}
+<li>{$k}. {$v['answer']} 
+  <input name="answer" type="radio" value="{$k}" /> <input name="right" type="hidden" value="{$v['right']}" /> </li>
+{/loop}
+</ul>
+<input name="" id="jiexi" value="确定" class="button" type="button" />
+</div>
+
+<div id="content" class="hide">
+ <p id="result"></p>
+ <div style="background-color:#6F6">解题思路： {$content}</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#jiexi').click(function(){
+		right_answer = '{$right_answer}';
+		xx = $("input[name='answer']:checked").val(); 
+		if(right_answer == xx){ 
+		    $('#result').html('<span style="color:green;font-weight:bold">您的选择是'+xx+',恭喜您回答正确！</span>');
+		}else{
+		     $('#result').html('<span style="color:red;font-weight:bold">您的选择是'+xx+',回答错误!正确答案是:'+right_answer+'</span>');
+		}
+		$('#jiexi').addClass("hide");
+		$('#content').removeClass("hide");
+	})
+});
+</script>
+</body>
+</html>

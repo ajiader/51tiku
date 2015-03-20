@@ -1,0 +1,124 @@
+
+default_type   text/html;
+#防止sql注入
+if ($request_uri ~* (.*)(Field=Keywor|insert|[+|(%20)]select[+|(%20)]|[+|(%20)]delete[+|(%20)]|[+|(%20)]update[+|(%20)]|(cost\()|(concat\()|union|[+|(%20)]count[+|(%20)]|\*|master|truncate|declare|\'|\;|[+|(%20)]and[+|(%20)]|[+|(%20)]or[+|(%20)]|exec)(.*)$ ) {
+return 404;
+}
+#上传目录禁止执行php
+location ~ ^/(statics|uploadfile|phpsso_server/uploadfile|cxb/images)/ {
+    if ($request_uri ~* (.*)(php|php5|Php|PHp|PHP|phP|pHP|PhP)(.*)$ ) {
+      return 404;
+    }
+}
+
+
+location ~ /phpcms { 
+    return 404;
+    #deny  all; 
+} 
+location ~ /\.ht { 
+    return 404;
+    #deny  all; 
+} 
+
+
+#如果是目录自动加斜杠
+if (-d $request_filename) {
+rewrite ^/(.*)([^/])$ http://$host/$1$2/ permanent;
+}
+
+
+
+#所有静态文件都由nginx处理，并用gzip压缩输出
+location ~* \.(jpg|jpeg|png|gif|css|js|swf|mp3|avi|flv|xml|zip|rar)$ {
+        expires 7d;
+        gzip on;
+        gzip_types  text/plain application/x-javascript text/css application/xml;
+	error_page 403 404 /404-1.php;
+}
+location ~ ^/NginxStatus/ { 
+	    stub_status on; #Nginx 状态监控配置
+	    access_log off;
+	 } 
+
+
+ location ~ .*\.(htm|html)?$
+                        {
+                              set $memc_cmd 'get';
+                              set $memc_key $host$uri;
+                              memc_pass mem_backend;
+                              error_page 404 = @trymemfile404;
+                        }
+
+location / {
+			      set $memc_cmd 'get';
+                              set $memc_key $host$uri;
+                              memc_pass mem_backend;
+                              error_page 404 = @trymemfile404;
+} 
+
+ location @trymemfile404{
+
+                         #set $memc_cmd 'set';
+                         #set $memc_key $uri;
+                         #set $memc_exptime 24;
+                        # memc_pass mem_backend;
+
+#站点地图
+rewrite ^/sitemaps.html$  /goshouye.php?m=content&c=index&a=sitemaps last;
+#自定义表单页面
+rewrite ^/(.*)_form.html$ /goshouye.php?m=content&c=index&a=formpost&typeurl=$1&$query_string last;
+
+
+
+#内容页
+rewrite ^/tiku-([0-9]+)-([0-9]+)-([0-9]+).html /goshouye.php?m=content&c=index&a=show&catid=$1&id=$2&page=$3 last; 
+#rewrite ^/content-([0-9]+)-([0-9]+)-([0-9]+).html /goshouye.php?m=content&c=index&a=show&catid=$1&id=$2&page=$3 last; 
+
+
+	if (!-e $request_filename) {
+	#地方站 31省市
+	rewrite ^/(En|jsj)/beijing$ /goshouye.php?m=content&c=city&pinyin=beijing&catdir=$1 last;
+        rewrite ^/(En|jsj)/(beijing|shanghai|tianjin|chongqing|hebei|shanxi|neimenggu|liaoning|jilin|heilongjiang|jiangshu|zhejiang|anhui|fujian|jiangxi|shandong|henan|hubei|hunan|guangdong|guangxi|hainan|sichuan|guizhou|yunnan|xizang|shanxis|gansu|qinghai|ningxia|xinjiang)(.*)/$ /goshouye.php?m=content&c=city&pinyin=$2$3&catdir=$1 last;
+
+	#栏目伪静态
+	rewrite ^/(En|jsj|zyzg)(.*)/(.*)/list.html$ /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&$query_string last; 
+  rewrite ^/(En|jsj|zyzg)(.*)/(.*)/m([0-9]+)_t([0-9]+)_([0-9]+).html /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&mid=$4&typeid=$5&page=$6 last;
+  rewrite ^/(En|jsj|zyzg)(.*)/(.*)/m(.*)_t([0-9]+)_([0-9]+).html /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&mpinyin=$4&typeid=$5&page=$6 last;
+  rewrite ^/(En|jsj|zyzg)(.*)/(.*)/mk([0-9]+)/$ /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&mid=$4 last;
+	rewrite ^/(En|jsj|zyzg)(.*)/(.*)/mk(.*)/$ /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&mpinyin=$4 last;
+  rewrite ^/(En|jsj|zyzg)(.*)/(.*)/(.*)_([0-9]+).html /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&pinyin=$4&page=$5 last;
+  rewrite ^/(En|jsj|zyzg|english)/([0-9]+).html /goshouye.php?m=content&c=index&a=lists&categorydir=$1&page=$2 last; 
+  rewrite ^/(En|jsj|zyzg)(.*)/(.*)/([0-9]+).html /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&page=$4 last; 
+	rewrite ^/(En|jsj|zyzg)(.*)/(.*)/$ /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3 last; 
+	rewrite ^/(En|jsj|zyzg|english)/$ /goshouye.php?m=content&c=index&a=lists&categorydir=$1 last; 
+	}
+	
+
+        
+
+rewrite ^/list-([0-9]+)-([0-9]+).html /goshouye.php?m=content&c=index&a=lists&catid=$1&page=$2 last; 
+#rewrite ^/tag-([^\.]*)-([0-9]+)-([0-9]+).html /goshouye.php?m=content&c=tag&catid=$2&tag=$1&page=$3 last; 
+rewrite ^/comment-([0-9]+)-([0-9]+)-([0-9]+).html /goshouye.php?m=comment&c=index&a=init&commentid=content_$1-$2-$3 last;
+
+
+#tags关键词
+rewrite ^/tags-(.*)_([0-9]+)_([0-9]+).html /goshouye.php?m=content&c=tag&catid=$2&tag=$1&page=$3 last;
+
+
+
+#自定义seo推广页面
+rewrite ^/r/(.*)/ /goshouye.php?m=diypage&c=index&a=init&dirname=$1 last;
+
+#ajax页面调用
+rewrite ^/ajax_(.*).html /goshouye.php?m=ajax&a=$1 last;
+rewrite ^/kscount_([0-9]+)_([0-9]+).html$  /kapi.php?op=count&id=$1&modelid=$2 last;
+rewrite ^/$ /goshouye.php last;
+# if (-f $request_filename/goshouye.php){
+#             rewrite (.*) $1/goshouye.php;
+#         }
+if (-f $request_filename/index.html){
+            rewrite (.*) $1/index.html break;
+        }
+#rewrite ^/(.*) /goshouye.php?error=1  last;
+}
