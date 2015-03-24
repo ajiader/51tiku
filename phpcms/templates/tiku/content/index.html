@@ -7,32 +7,8 @@
 </head>
 
 <body>
-<div id="rskstopfixed">
-	<div class="rskscenter">
-    	<span class="sp1"><a href="javascript:void(0)" class="a1">加入收藏</a><a href="javascript:void(0)" class="a2">网站导航</a></span>
-        <span class="sp2"><a href="#">首页</a><a href="#">考试资讯</a><a href="#">报考指南</a><a href="#">模拟题库</a><a href="#" class="ahot">软件团购<em></em></a></span>
-        <div class="clear"></div>
-    </div>
-</div>
+{template "content","tiku_header"}
 <div class="rskscenter">
-	<div class="rsksserch">
-        <div class="rskslogo"></div>
-        <div class="rskssc">
-        	<input type="text" name="choicetext" value="全部" disabled="disabled" class="choicetxt" />
-            <input type="text" name="manualtxt" class="manualtxt" />
-            <input type="button" name="confirmbtn" value=" " class="confirmbtn" />
-        </div>
-        <div class="celar"></div>
-    </div>
-    <div class="rsksmenu">
-    	<div class="dvname"></div>
-        <div class="menutitle">
-        	<a href="#">临床执业助理医师资格</a>/<a href="#">执业兽医资格</a>/<a href="#">乡镇临床执业助理医师</a>/<a href="#">中西医结合执业医师资格</a>/<a href="#">公卫执业医师资格</a>/<a href="#">公卫执业助理医师资格</a>/<a href="#">乡镇中医执业助理医师</a>/<a href="#">中医执业医师资格</a>/<a href="#">口腔执业医师资格</a>/<a href="#">中医执业助理医师资格</a><a href="#">临床执业助理医师资格</a>/<a href="#">执业兽医资格</a>
-        </div>
-        <div class="nav_dh">
-        	<a href="#" class="a1" target="_blank">职称计算机</a><a href="#" target="_blank">职称英语</a><a href="#" target="_blank">教师资格</a><a  href="#" target="_blank">人力资源师</a><a  href="#" target="_blank" class="a1">司法考试</a><a  href="#" target="_blank">深圳职员</a><a  href="#" target="_blank">心理咨询师</a><a href="#" target="_blank">公务员</a><a href="#" target="_blank">返回首页</a>
-        </div>
-    </div>
     <div class="rskscontentone rskstymgbt15">
     	<div class="picqh" id="slider">
         	<a href="#" target="_blank"><img src="/statics/tiku/images/qhpic2.png" title="2014年全国职称计算机考试报考指南" /></a>
@@ -374,27 +350,11 @@
         </div>
     </div>
 </div>
-<div class="footcopy"><div class="rskscenter">@2015 执业药师考试题库网 www.51kaozc.com  保留一切权利  客服热线4000188625</div></div>
-<div class="rskscenter imgtxtalign">
-	<p><img src="/statics/tiku/images/footer_img01.png"><img src="/statics/tiku/images/footer_img02.png"><img src="/statics/tiku/images/footer_img03.png"><img src="/statics/tiku/images/footer_img04.png"></p>
-    <p><!-- Baidu Button BEGIN -->
-    <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare" style="margin:auto; float:none; width:350px;">
-        <a class="bds_qzone">QQ空间</a>
-        <a class="bds_tsina">新浪微博</a>
-        <a class="bds_tqq">腾讯微博</a>
-        <a class="bds_renren">人人网</a>
-        <span class="bds_more">更多</span>
-		<a class="shareCount"></a>
-    </div>
-	<!-- Baidu Button END --> </p>
-</div>
+{template "content","tiku_footer"}
 <script language="javascript" src="/statics/tiku/js/jquery-1.6.1.min.js"></script>
 <script language="javascript" src="/statics/tiku/js/jquery.nivo.slider.pack.js"></script>
 <script language="javascript" src="/statics/tiku/js/jquery.scrollbox.js"></script>
 <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
-<script type="text/javascript" id="bdshare_js" data="type=tools&uid=499558" ></script>
-<script type="text/javascript" id="bdshell_js"></script>
-<script type="text/javascript">document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();</script>
 <script type="text/javascript">
 $(window).load(function() {
 	$('#slider').nivoSlider();

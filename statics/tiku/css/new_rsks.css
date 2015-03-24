@@ -193,3 +193,39 @@ ul.pd0{ padding:0px;}
 .seoright .dvone .tjlist span.icon3{ background:url(http://www.renshikaoshi.net/statics/renshikaoshi/images/jsjicon3.gif) no-repeat center center;}
 .seoright .dvone .tjlist span.icon4{ background:url(http://www.renshikaoshi.net/statics/renshikaoshi/images/jsjicon4.gif) no-repeat center center;}
 .seoright .dvone .tjlist span.icon5{ background:url(http://www.renshikaoshi.net/statics/renshikaoshi/images/jsjicon5.gif) no-repeat center center;}
+.showlf_top_bor{ border-top:3px #008dc7 solid; padding-top:10px; padding-bottom:0px;}
+.tiku_title{ padding:15px 0 15px 20px; font-size:20px; border-bottom:1px #d8d8d8 solid; font-weight:normal; text-align:center;}
+.tiku_title a{ color:#333333;}
+.tiku_aw_list{ padding:10px 10px 20px 10px;}
+.tiku_aw_list li{ display:block; font-size:16px; padding:10px 0 10px 6px; cursor:pointer; margin-bottom:2px; line-height:30px; border:1px #ffffff solid;}
+.tiku_aw_list li input{ vertical-align:middle; margin-right:10px;}
+.tiku_aw_list li.selected{ border:1px #dee3e3 dashed; color:#f37d00;}
+.tiku_aw_btn{ padding-left:25px; margin-bottom:15px;  text-align:center;}
+.tiku_aw_btn input{ width:192px; height:53px; background-image:url(../images/tiku_btn.gif); background-repeat:no-repeat; background-position:0px 0px; border:0px; cursor:pointer;}
+.tiku_aw_btn input:hover{ background-position:0 -54px;}
+.tikuerror,.tikuCorrect{ line-height:40px; font-size:14px; padding:0 10px; font-size:30px; font-weight:normal; display:inline-block; border:1px #d9d9d9 dotted; margin-left:10px; }
+.tikuCorrect{ color:#f37d00;}
+.tikuerror{ color:#d10000;}
+.tikuerror strong,.tikuCorrect strong{ padding:0 5px;}
+.tikujiexi{ line-height:32px; padding:20px; margin:10px; border:1px #eeeeee dashed; font-size:16px; background:#f9f9f9; color:#666666;}
+.tikusx{ padding:15px; text-align:center;}
+.tikusx a{ width:142px; height:53px; line-height:50px; display:inline-block; margin-right:50px; text-align:center; font-size:20px; color:#ffffff;  background-image:url(../images/tiku_btn.gif); background-repeat:no-repeat; background-position:0px -114px;}
+.tikusx a.mg0{ margin-right:0px;}
+.tikusx a:hover{ background-position:0 -168px; text-decoration:none;}
+#result{ height:50px; line-height:50px; padding-left:20px; font-size:16px; border-top:1px #d9d9d9 solid; padding-top:10px; overflow:hidden;}
+#result span div,#result span strong{ float:left;}
+#result span strong{ margin-top:4px;}
+.tikunum{ padding:20px 20px 20px 10px; font-size:18px; border-bottom:1px #e2e7f5 dashed;  margin:0 10px;}
+.tikunum span{ display:inline-block; width:28px; text-align:center; height:28px; background:#008dc7; border-radius:5px; color:#ffffff; margin-right:10px;}
+.tikuctj{ padding:15px 20px; background:#f9f9f9;}
+.tikuctj a{ display:inline-block; width:101px; height:30px; background-image:url(../images/tiku_btn.gif); background-repeat:no-repeat; text-align:center; line-height:27px; color:#ffffff; margin-right:10px;}
+.tikuctj a.a1{ background-position:0 -228px;}
+.tikuctj a.a1:hover{ background-position:0 -267px; text-decoration:none;}
+.tikuctj a.a2{ background-position:-107px -228px;}
+.tikuctj a.a2:hover{ background-position:-107px -267px; text-decoration:none;}
+.tikurgls{ border:1px #d9d9d9 solid; padding:10px 0 3px 0;}
+.tikurgls ul li{ float:left; width:36px; height:36px; margin:0 0 7px 7px; display:inline;}
+.tikurgls ul li a{ display:block; height:36px; background-image:url(../images/tiku_btn.gif); background-repeat:no-repeat; background-position:-176px -120px; text-align:center; line-height:37px; font-size:16px;}
+.tikurgls ul li a:hover,.tikurgls ul li a.selected{ background-position:-176px -164px; text-decoration:none; color:#ffffff;}
+.tikurgls .dvfy{ text-align:center; padding:8px 0; border-top:1px #d9d9d9 dashed;}
+.tikurgls .dvfy a{ display:inline-block; background-image:url(../images/tiku_btn.gif); background-repeat:no-repeat; background-position:0 -306px; width:101px; height:30px; line-height:28px; margin-right:6px; }

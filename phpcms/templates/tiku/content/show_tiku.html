@@ -6,9 +6,7 @@
 <meta name="keywords" content="{$SEO['keyword']}">
 <meta name="description" content="{$SEO['description']}">
 <meta name="baidu-site-verification" content="uhu52zagQh" />
-<link type="text/css" rel="stylesheet" href="/statics/renshikaoshi/css/kzcty-css.css" />
-<link type="text/css" rel="stylesheet" href="/statics/renshikaoshi/css/cykzc.css" />
-<link type="text/css" rel="stylesheet" href="/statics/en/css/zcenglishnew.css" />
+<link type="text/css" rel="stylesheet" href="/statics/tiku/css/new_rsks.css" />
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 <style >
 .hide{display:none; }
@@ -16,49 +14,184 @@
 </head>
 
 <body>
-{php $ZM = range(A,Z);}
-{pc:get sql="SELECT * FROM phpcms_tiku_answer where qid=$id" cache="0"  dbsource="" return="andata"}
-<?php
-shuffle($andata);
-foreach($andata as $key => $value)
-{
-   $answerow[$ZM[$key]] =  $value;
-   if($value['right'] == 1){
-       $right_answer = $ZM[$key];
-   }
-}
-//print_R($answerow);
-
-?>
-<div class="onlinequizct">
-<h2>{$title}</h2>
-<ul>
-{loop $answerow $k $v}
-<li>{$k}. {$v['answer']} 
-  <input name="answer" type="radio" value="{$k}" /> <input name="right" type="hidden" value="{$v['right']}" /> </li>
-{/loop}
-</ul>
-<input name="" id="jiexi" value="确定" class="button" type="button" />
+{template "content","tiku_header"}
+<div class="rskscenter">
+    <div class="maindv">
+            <div class="mgbt"><a href="#" target="_blank"><img src="/statics/tiku/images/addpic1.gif" /></a></div>
+            <div class="ggcontent">
+                <div class="ggleft"><a href="#" target="_blank"><img src="http://www.renshikaoshi.net/statics/renshikaoshi/images/addpic2.gif" /></a></div>
+                <div class="ggright">
+                    <div class="tit"><a href="#" target="_blank">外科</a><a href="#" target="_blank">内科</a><a href="#" target="_blank">妇产科</a><a href="#" target="_blank">五官科</a><a href="#" target="_blank">预防系列</a><a href="#" target="_blank">医技系列</a><a href="#" target="_blank">检验系列</a><a href="#" target="_blank">中医系列</a><a href="#" target="_blank">护理系列</a><a href="#" target="_blank">药学系列</a><a href="#" target="_blank">其他</a></div>
+                    <div class="nydv">
+                        <ul>
+                            <li><a href="#" target="_blank">妇产科医学高级职称考试真题</a></li><li><a href="#" target="_blank">口腔内科医2015年考试大纲下载</a></li><li><a href="#" target="_blank">心电学高级职称考试考试模拟题</a></li>
+                            <li><a href="#" target="_blank">妇产科医学高级职称考考试试真题</a></li><li><a href="#" target="_blank">口腔内科医2015年考试大纲下载</a></li><li><a href="#" target="_blank">心电学高级职称考试模拟题</a></li>
+                            <li><a href="#" target="_blank">妇产科医学高级职称考试真题</a></li><li><a href="#" target="_blank">口腔内科医2015年考试大纲下载</a></li>
+                            <li><a href="#" target="_blank">心电学高级职称考试考试考模拟题</a></li>
+                            <li><a href="#" target="_blank">妇产科医学高级职称考试真题</a></li><li><a href="#" target="_blank">口腔内科医2015年考试大纲下载</a></li><li><a href="#" target="_blank">心电学高级职称考试模拟题</a></li>
+                        </ul>
+                    </div>
+                    <div class="nyrg"><span>网易教育统计数据：</span><p>职称、执业考试使用题库模拟考试后通过率提高86.18% <a href="#">查看原文>></a></p></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="ggbtd">
+                <h2>职称计算机考试题库下载</h2>
+                <dl>
+                    <dt><a href="#" target="_blank"><img src="http://www.renshikaoshi.net/statics/renshikaoshi/images/xp.jpg" /></a></dt>
+                    <dd><p class="p1"><a href="#" target="_blank">Windows XP</a></p><p class="p2">30天销量<font>6542</font>件</p></dd>
+                </dl>
+                <dl class="dl1">
+                    <dt><a href="#" target="_blank"><img src="http://www.renshikaoshi.net/statics/renshikaoshi/images/wrod2003.jpg" /></a></dt>
+                    <dd><p class="p1"><a href="#" target="_blank">Word 2003</a></p><p class="p2">30天销量<font>5227</font>件</p></dd>
+                </dl>
+                <dl>
+                    <dt><a href="#" target="_blank"><img src="http://www.renshikaoshi.net/statics/renshikaoshi/images/PowerPoint2003.jpg" /></a></dt>
+                    <dd><p class="p1"><a href="#" target="_blank">PowerPoint2003</a></p><p class="p2">30天销量<font>6542</font>件</p></dd>
+                </dl>
+                <dl>
+                    <dt><a href="#" target="_blank"><img src="http://www.renshikaoshi.net/statics/renshikaoshi/images/Internet.jpg" /></a></dt>
+                    <dd><p class="p1"><a href="#" target="_blank">Internet 应用</a></p><p class="p2">30天销量<font>6542</font>件</p></dd>
+                </dl>
+                <dl class="dl1">
+                    <dt><a href="#" target="_blank"><img src="http://www.renshikaoshi.net/statics/renshikaoshi/images/Excel2003.jpg" /></a></dt>
+                    <dd><p class="p1"><a href="#" target="_blank">Excel2003</a></p><p class="p2">30天销量<font>2006</font>件</p></dd>
+                </dl>
+                <span class="qita"><a href="#" target="_blank">其他模块>></a></span>
+                <div class="clear"></div>
+            </div>
+    </div>
+    
+    <div class="kzc-posi">当前位置：<a href="{siteurl($siteid)}">首页</a><span> &gt; </span> <a href="{$CATEGORYS[$catid][url]}">中西医结合执业医师资格</a> </div>
+    
+    <div class="listymlf showlf_top_bor">
+        
+        {php $ZM = range(A,Z);}
+        {pc:get sql="SELECT * FROM phpcms_tiku_answer where qid=$id" cache="0"  dbsource="" return="andata"}
+        <?php
+        shuffle($andata);
+        foreach($andata as $key => $value)
+        {
+           $answerow[$ZM[$key]] =  $value;
+           if($value['right'] == 1){
+               $right_answer = $ZM[$key];
+           }
+        }
+        //print_R($answerow);
+        
+        ?>
+        <div class="onlinequizct">
+        <h2 class="tiku_title">{$title}</h2>
+        <div class="tikuctj"><a href="#" class="a1">错题集</a><a href="#" class="a2">我的收藏</a></div>
+        <div class="tikunum"><span>1</span>关于医疗机构的药剂管理，错误的是 </div>
+        <ul class="tiku_aw_list" id="tikulist">
+            {loop $answerow $k $v}
+            <li><input name="answer" type="radio" value="{$k}" /> <input name="right" type="hidden" value="{$v['right']}" />{$k}. {$v['answer']} </li>
+            {/loop}
+        </ul>
+        <div class="tiku_aw_btn"><input name="" id="jiexi" value=" " class="button" type="button" /></div>
+        </div>
+        
+        <div id="content" class="hide">
+         <p id="result"></p>
+         <div class="tikujiexi"><strong>解题思路：</strong> {$content}</div>
+         <div class="tikusx"><a href="#">上一题</a><a href="#">下一题</a><a href="#" class="mg0">加入收藏</a></div>
+        </div>
+        
+    </div>
+    
+    <div class="listymrg">
+    	<h2 class="rgcut">当前试题序列号</h2>
+    	<div class="tikurgls mgbt">
+           	<ul>
+            	<li><a href="#" class="selected">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li><a href="#">6</a></li>
+                <li><a href="#">7</a></li><li><a href="#">8</a></li><li><a href="#">9</a></li><li><a href="#">10</a></li><li><a href="#">11</a></li><li><a href="#">12</a></li>
+                <li><a href="#">13</a></li><li><a href="#">14</a></li><li><a href="#">15</a></li><li><a href="#">16</a></li><li><a href="#">17</a></li><li><a href="#">18</a></li>
+                <li><a href="#">19</a></li><li><a href="#">20</a></li><li><a href="#">21</a></li><li><a href="#">22</a></li><li><a href="#">23</a></li><li><a href="#">24</a></li>
+                <li><a href="#">25</a></li><li><a href="#">26</a></li><li><a href="#">27</a></li><li><a href="#">28</a></li><li><a href="#">29</a></li><li><a href="#">30</a></li>
+            </ul>
+            <div class="clear"></div>
+            <div class="dvfy"><a href="#">上一页</a><a href="#">下一页</a></div>
+        </div>
+    
+        <div class="mgbt"><a href="#"><img src="http://www.renshikaoshi.net/statics/renshikaoshi/images/jsjggpic1.gif"></a></div>
+        <div class="seoright">
+            <div class="dvone">
+                <div class="dvcut">职称计算机考试模块推荐<a href="#">更多&gt;&gt;</a></div>
+                <div class="tjlist">
+                    <span class="sp1 icon1"></span>
+                    <span class="sp2">Word XP模块<br><a href="#">详情</a></span>
+                    <span class="sp3"><p class="p1">10元</p><p class="p2">原价50元</p></span>
+                </div>
+                <div class="tjlist">
+                    <span class="sp1 icon2"></span>
+                    <span class="sp2">Word 2003模块<br><a href="#">详情</a></span>
+                    <span class="sp3"><p class="p1">10元</p><p class="p2">原价50元</p></span>
+                </div>
+                <div class="tjlist">
+                    <span class="sp1 icon3"></span>
+                    <span class="sp2">Internet模块<br><a href="#">详情</a></span>
+                    <span class="sp3"><p class="p1">10元</p><p class="p2">原价50元</p></span>
+                </div>
+                <div class="tjlist">
+                    <span class="sp1 icon4"></span>
+                    <span class="sp2">PPT2003模块<br><a href="#">详情</a></span>
+                    <span class="sp3"><p class="p1">10元</p><p class="p2">原价50元</p></span>
+                </div>
+                <div class="tjlist">
+                    <span class="sp1 icon5"></span>
+                    <span class="sp2">Excel 2003模块<br><a href="#">详情</a></span>
+                    <span class="sp3"><p class="p1">10元</p><p class="p2">原价50元</p></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="rgcut">推荐阅读</div>
+        <div class="rgctdv">
+            <ul>
+                <li><i class="i2">1</i><a target="_blank" href="#">2014年初级药士考试辅导：药物与受体</a></li>
+                <li><i class="i2">2</i><a target="_blank" href="#">药师考试报名时间12月28日至1月20日</a></li>
+                <li><i class="i2">3</i><a target="_blank" href="#">药士考试报名时间12月28日至1月20日-药</a></li>
+                <li><i class="i1">4</i><a target="_blank" href="#">2013药剂师报名时间-药师考试报名时间</a></li>
+                <li><i class="i1">5</i><a target="_blank" href="#">2013年药士考试报名时间|入口-201</a></li>
+                <li><i class="i1">6</i><a target="_blank" href="#">2013药剂师报名时间-药师考试报名时间</a></li>
+                <li><i class="i1">7</i><a target="_blank" href="#">2013年药士考试报名时间|入口-201</a></li>
+                <li><i class="i1">8</i><a target="_blank" href="#">2013药剂师报名时间-药师考试报名时间</a></li>
+                <li><i class="i1">9</i><a target="_blank" href="#">2013年药士考试报名时间|入口-201</a></li>
+                <li><i class="i1">10</i><a target="_blank" href="#">2013药剂师报名时间-药师考试报名时间</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    
 </div>
 
-<div id="content" class="hide">
- <p id="result"></p>
- <div style="background-color:#6F6">解题思路： {$content}</div>
-</div>
 <script type="text/javascript">
 $(document).ready(function(){
     $('#jiexi').click(function(){
 		right_answer = '{$right_answer}';
 		xx = $("input[name='answer']:checked").val(); 
+		$("#tikulist li").unbind("click");
 		if(right_answer == xx){ 
-		    $('#result').html('<span style="color:green;font-weight:bold">您的选择是'+xx+',恭喜您回答正确！</span>');
+		    $('#result').html('<span>恭喜您回答正确！</span>');
 		}else{
-		     $('#result').html('<span style="color:red;font-weight:bold">您的选择是'+xx+',回答错误!正确答案是:'+right_answer+'</span>');
+		     $('#result').html('<span><div>回答错误，正确答案是：</div><strong class="tikuCorrect">'+right_answer+'</strong></span>');
 		}
 		$('#jiexi').addClass("hide");
 		$('#content').removeClass("hide");
-	})
+	});
+	$('#tikulist li').click(function(){
+		$(this).addClass("selected").siblings().removeClass();
+		var $radio = $(this).find("input[type=radio]"),
+		$flag  = $radio.is(":checked");
+		if( !$flag ){
+			$radio.prop("checked",true);   
+		}
+	});
 });
+
 </script>
+{template "content","tiku_footer"}
 </body>
 </html>
