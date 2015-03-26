@@ -95,7 +95,8 @@
         </div>
         
         <div id="content" class="hide">
-         <p id="result"></p>
+         <p ><span id="result"></span>  <span id="wrongtopic"></span></p>
+        
          <div class="tikujiexi"><strong>解题思路：</strong> {$content}</div>
          <div class="tikusx"><a href="{$previous_page[url]}">上一题</a><a href="{$next_page[url]}">下一题</a>  <span id='favorite'><a  href="javascript:;" onclick="add_favorite('{$title}');" class="mg0">加入收藏</a></span></div>
         </div>
@@ -210,7 +211,7 @@ function add_favorite(title) {
 function add_wrongtopic(title) {
 		$.getJSON('/kapi.php?op=add_wrongtopic&title='+encodeURIComponent(title)+'&url='+encodeURIComponent(location.href)+'&'+Math.random()+'&callback=?', function(data){
 			if(data.status==1)	{
-				$("#favorite").html('收藏成功');
+				$("#wrongtopic").html('已经添加到<a href="/goshouye.php?m=member&c=index&a=wrongtopic" target="_blank">我的错题集</a>');
 			} else {
 				alert('请登录');
 				
@@ -218,20 +219,6 @@ function add_wrongtopic(title) {
 		});
 	}
 	
-function checklogin()
-{
-	 
-	$.getJSON('/kapi.php?op=checklogin&'+Math.random()+'&callback=?', function(data){
-		 userid = data.status;
-		 return userid;
-			//if(data.status == '-1')	{
-				//alert('请登录后答题！');
-				//window.location.href="/goshouye.php?m=member&c=index&a=login&forward="+window.location.href; 
-
-			//}
-	});
-	
-}
 </script>
 {template "content","tiku_footer"}
 </body>
