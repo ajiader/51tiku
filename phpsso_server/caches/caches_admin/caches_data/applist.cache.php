@@ -5,7 +5,7 @@ return array (
     'appid' => '1',
     'type' => 'phpcms_v9',
     'name' => 'phpcms v9',
-    'url' => 'http://www.boda.com/',
+    'url' => 'http://dev.51tiku.com/',
     'authkey' => 'EGzMzs7GVi69qAuHpkTVGpdo560FzcxW',
     'ip' => '',
     'apifilename' => 'kapi.php?op=phpsso',

@@ -1,0 +1,31 @@
+	<ul>
+           <?php
+           		$num_a  = 30; $thispage = ceil($listorder/$num_a);
+                $page = ($thispage >= $page) ? $thispage  : $page;
+           ?>
+           {pc:content action="lists" catid="$catid" num="30" order="listorder asc" page="$page"} {loop $data $r}
+            	<li><a href="{$r[url]}" {if $r[listorder] == $listorder}class="selected"{/if}>{$r[listorder]}</a></li>
+                {/loop}{/pc}
+            </ul>
+            <div class="clear"></div>
+            <div class="dvfy ajaxhomelist"><span style="display:none">{$page}</span>{if $ajax_pages}{$ajax_pages}{/if}</div>
+ <script type="text/javascript">
+$(function(){
+var curr_page = parseInt($('.ajaxhomelist span').text());
+$('.ajaxhomelist a').click(function(event){
+event.preventDefault();
+_page = $(this).text();
+
+if(_page == "下一页") _pages = curr_page+1;
+if(_page == "上一页") _pages = curr_page-1;
+
+$('.contain_ajaxhomelist').load(
+"{siteurl($siteid)}/ajax_homeajaxlist_{$catid}-"+_pages+".html",
+function(){
+//这个是让页面滚动到列表上方
+$("html,body").animate({scrollTop:$("#conter").offset().top},1000);
+});
+});
+});
+</script>
+           

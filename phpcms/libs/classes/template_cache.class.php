@@ -205,6 +205,7 @@ final class template_cache {
 					$datas['action'] = $action;
 					$str .= '$'.$op.'_total = $'.$op.'_tag->count('.self::arr_to_html($datas).');';
 					$str .= '$pages = pages($'.$op.'_total, $page, $pagesize, $urlrule);';
+					$str .= '$ajax_pages = ajax_pages($'.$op.'_total, $page, $pagesize, $urlrule);';  //ajiax分页
 				}
 				$str .= '$'.$return.' = $'.$op.'_tag->'.$action.'('.self::arr_to_html($datas).');';
 				$str .= '}';

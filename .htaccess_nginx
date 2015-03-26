@@ -111,6 +111,7 @@ rewrite ^/tags-(.*)_([0-9]+)_([0-9]+).html /goshouye.php?m=content&c=tag&catid=$
 rewrite ^/r/(.*)/ /goshouye.php?m=diypage&c=index&a=init&dirname=$1 last;
 
 #ajaxÒ³Ãæµ÷ÓÃ
+rewrite ^/ajax_(.*)_([0-9]+)-([0-9]+).html /goshouye.php?m=ajax&a=$1&catid=$2&page=$3 last;
 rewrite ^/ajax_(.*).html /goshouye.php?m=ajax&a=$1 last;
 rewrite ^/kscount_([0-9]+)_([0-9]+).html$  /kapi.php?op=count&id=$1&modelid=$2 last;
 rewrite ^/$ /goshouye.php last;

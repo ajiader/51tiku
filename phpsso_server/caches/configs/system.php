@@ -14,11 +14,11 @@ return array(
 'cookie_pre' => 'GcLwA_', //Cookie 前缀，同一域名下安装多套系统时，请修改Cookie前缀
 'cookie_ttl' => 0, //Cookie 生命周期，0 表示随浏览器进程
 
-'js_path' => 'http://www.kaozc.com/phpsso_server/statics/js/', //CDN JS
-'css_path' => 'http://www.kaozc.com/phpsso_server/statics/css/', //CDN CSS
-'img_path' => 'http://www.kaozc.com/phpsso_server/statics/images/', //CDN img
+'js_path' => '/phpsso_server/statics/js/', //CDN JS
+'css_path' => '/phpsso_server/statics/css/', //CDN CSS
+'img_path' => '/phpsso_server/statics/images/', //CDN img
 'upload_path' => PHPCMS_PATH.'uploadfile/', //上传文件路径
-'app_path' => 'http://www.kaozc.com/phpsso_server/',//动态域名配置地址
+'app_path' => '/phpsso_server/',//动态域名配置地址
 
 'charset' => 'utf-8', //网站字符集
 'timezone' => 'Etc/GMT-8', //网站时区（只对php 5.1以上版本有效），Etc/GMT-8 实际表示的是 GMT+8

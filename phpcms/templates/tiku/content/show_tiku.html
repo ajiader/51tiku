@@ -8,6 +8,8 @@
 <meta name="baidu-site-verification" content="uhu52zagQh" />
 <link type="text/css" rel="stylesheet" href="/statics/tiku/css/new_rsks.css" />
 <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script src="/statics/js/jquery.cookie.js"></script>
+
 <style >
 .hide{display:none; }
 </style>
@@ -62,7 +64,7 @@
             </div>
     </div>
     
-    <div class="kzc-posi">当前位置：<a href="{siteurl($siteid)}">首页</a><span> &gt; </span> <a href="{$CATEGORYS[$catid][url]}">中西医结合执业医师资格</a> </div>
+    <div class="kzc-posi">当前位置：<a href="{siteurl($siteid)}">首页</a><span> &gt; </span> <a href="{$CATEGORYS[$catid][url]}">{$CATEGORYS[$catid][catname]}</a> </div>
     
     <div class="listymlf showlf_top_bor">
         
@@ -82,8 +84,8 @@
         ?>
         <div class="onlinequizct">
         <h2 class="tiku_title">{$title}</h2>
-        <div class="tikuctj"><a href="#" class="a1">错题集</a><a href="#" class="a2">我的收藏</a></div>
-        <div class="tikunum"><span>1</span>关于医疗机构的药剂管理，错误的是 </div>
+        <div class="tikuctj"><a href="/goshouye.php?m=member&c=index&a=wrongtopic" target="_blank" class="a1">我的错题集</a><a href="/goshouye.php?m=member&c=index&a=favorite&t=2" target="_blank" class="a2">我的收藏</a></div>
+        <div class="tikunum"><span>{$listorder}</span>{$title}</div>
         <ul class="tiku_aw_list" id="tikulist">
             {loop $answerow $k $v}
             <li><input name="answer" type="radio" value="{$k}" /> <input name="right" type="hidden" value="{$v['right']}" />{$k}. {$v['answer']} </li>
@@ -95,25 +97,17 @@
         <div id="content" class="hide">
          <p id="result"></p>
          <div class="tikujiexi"><strong>解题思路：</strong> {$content}</div>
-         <div class="tikusx"><a href="#">上一题</a><a href="#">下一题</a><a href="#" class="mg0">加入收藏</a></div>
+         <div class="tikusx"><a href="{$previous_page[url]}">上一题</a><a href="{$next_page[url]}">下一题</a>  <span id='favorite'><a  href="javascript:;" onclick="add_favorite('{$title}');" class="mg0">加入收藏</a></span></div>
         </div>
         
     </div>
     
     <div class="listymrg">
     	<h2 class="rgcut">当前试题序列号</h2>
-    	<div class="tikurgls mgbt">
-           	<ul>
-            	<li><a href="#" class="selected">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">4</a></li><li><a href="#">5</a></li><li><a href="#">6</a></li>
-                <li><a href="#">7</a></li><li><a href="#">8</a></li><li><a href="#">9</a></li><li><a href="#">10</a></li><li><a href="#">11</a></li><li><a href="#">12</a></li>
-                <li><a href="#">13</a></li><li><a href="#">14</a></li><li><a href="#">15</a></li><li><a href="#">16</a></li><li><a href="#">17</a></li><li><a href="#">18</a></li>
-                <li><a href="#">19</a></li><li><a href="#">20</a></li><li><a href="#">21</a></li><li><a href="#">22</a></li><li><a href="#">23</a></li><li><a href="#">24</a></li>
-                <li><a href="#">25</a></li><li><a href="#">26</a></li><li><a href="#">27</a></li><li><a href="#">28</a></li><li><a href="#">29</a></li><li><a href="#">30</a></li>
-            </ul>
-            <div class="clear"></div>
-            <div class="dvfy"><a href="#">上一页</a><a href="#">下一页</a></div>
+    	<div class="tikurgls mgbt contain_ajaxhomelist">
+           {template "content","php_ajax_list"}
         </div>
-    
+   
         <div class="mgbt"><a href="#"><img src="http://www.renshikaoshi.net/statics/renshikaoshi/images/jsjggpic1.gif"></a></div>
         <div class="seoright">
             <div class="dvone">
@@ -168,18 +162,31 @@
 </div>
 
 <script type="text/javascript">
+var userid;
 $(document).ready(function(){
     $('#jiexi').click(function(){
-		right_answer = '{$right_answer}';
-		xx = $("input[name='answer']:checked").val(); 
-		$("#tikulist li").unbind("click");
-		if(right_answer == xx){ 
-		    $('#result').html('<span>恭喜您回答正确！</span>');
-		}else{
-		     $('#result').html('<span><div>回答错误，正确答案是：</div><strong class="tikuCorrect">'+right_answer+'</strong></span>');
-		}
-		$('#jiexi').addClass("hide");
-		$('#content').removeClass("hide");
+		
+	  if($.cookie('EallT__groupid') != null){
+	  		right_answer = '{$right_answer}';
+            xx = $("input[name='answer']:checked").val(); 
+            $("#tikulist li").unbind("click");
+            if(xx == null){
+                alert('您还没有做出选择！'); return false;
+            }
+            if(right_answer == xx){ 
+                $('#result').html('<span>恭喜您回答正确！</span>');
+            }else{
+                add_wrongtopic('{$title}');
+                 $('#result').html('<span><div>回答错误，正确答案是：</div><strong class="tikuCorrect">'+right_answer+'</strong></span>');
+            }
+            $('#jiexi').addClass("hide");
+            $('#content').removeClass("hide");
+	  }else{
+         alert('请登录后答题！');
+         window.location.href="/goshouye.php?m=member&c=index&a=login&forward="+window.location.href;
+      }
+		
+
 	});
 	$('#tikulist li').click(function(){
 		$(this).addClass("selected").siblings().removeClass();
@@ -190,7 +197,41 @@ $(document).ready(function(){
 		}
 	});
 });
+function add_favorite(title) {
+		$.getJSON('/kapi.php?op=add_favorite&title='+encodeURIComponent(title)+'&url='+encodeURIComponent(location.href)+'&'+Math.random()+'&callback=?', function(data){
+			if(data.status==1)	{
+				$("#favorite").html('收藏成功');
+			} else {
+				alert('请登录');
+				
+			}
+		});
+	}
+function add_wrongtopic(title) {
+		$.getJSON('/kapi.php?op=add_wrongtopic&title='+encodeURIComponent(title)+'&url='+encodeURIComponent(location.href)+'&'+Math.random()+'&callback=?', function(data){
+			if(data.status==1)	{
+				$("#favorite").html('收藏成功');
+			} else {
+				alert('请登录');
+				
+			}
+		});
+	}
+	
+function checklogin()
+{
+	 
+	$.getJSON('/kapi.php?op=checklogin&'+Math.random()+'&callback=?', function(data){
+		 userid = data.status;
+		 return userid;
+			//if(data.status == '-1')	{
+				//alert('请登录后答题！');
+				//window.location.href="/goshouye.php?m=member&c=index&a=login&forward="+window.location.href; 
 
+			//}
+	});
+	
+}
 </script>
 {template "content","tiku_footer"}
 </body>

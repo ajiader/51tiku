@@ -214,18 +214,18 @@ class index {
 		$this->db->table_name = $tablename;
 		//上一页
 		$previous_page = $this->db->get_one("`catid` = '$catid' AND `id`<'$id' AND `status`=99",'*','id DESC');
-		$previous_page2 = $this->db->get_one("`catid` = '$catid' AND `id`< ($id-1) AND `status`=99",'*','id DESC');
+		// $previous_page2 = $this->db->get_one("`catid` = '$catid' AND `id`< ($id-1) AND `status`=99",'*','id DESC');
 	
 		//下一页
 		$next_page = $this->db->get_one("`catid`= '$catid' AND `id`>'$id' AND `status`=99");
-		$next_page2 = $this->db->get_one("`catid`= '$catid' AND `id`>'($id+1)' AND `status`=99");
+		// $next_page2 = $this->db->get_one("`catid`= '$catid' AND `id`>'($id+1)' AND `status`=99");
 
 		if(empty($previous_page)) {
-			$previous_page = array('title'=>L('first_page'), 'thumb'=>IMG_PATH.'nopic_small.gif', 'url'=>'javascript:alert(\''.L('first_page').'\');');
+			$previous_page = array('title'=>L('first_page'), 'thumb'=>IMG_PATH.'nopic_small.gif', 'url'=>'javascript:alert(\'已经是第一题了\');');
 		}
 
 		if(empty($next_page)) {
-			$next_page = array('title'=>L('last_page'), 'thumb'=>IMG_PATH.'nopic_small.gif', 'url'=>'javascript:alert(\''.L('last_page').'\');');
+			$next_page = array('title'=>L('last_page'), 'thumb'=>IMG_PATH.'nopic_small.gif', 'url'=>'javascript:alert(\'已经是最后一题了\');');
 		}
 		//加载公务员随机话术
 		if ($siteid==2) {

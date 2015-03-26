@@ -55,5 +55,6 @@ RewriteRule ^$  goshouye.php [L]
 
 
 #ajax页面调用
+RewriteRule ^ajax_(.*)_([0-9]+)-([0-9]+).html goshouye.php?m=ajax&a=$1&catid=$2&page=$3 [L]
 RewriteRule ^ajax_(.*).html goshouye.php?m=ajax&a=$1 [L]
 </IfModule>

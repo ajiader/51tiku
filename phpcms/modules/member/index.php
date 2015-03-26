@@ -19,6 +19,7 @@ class index extends foreground {
 
 	public function init() {
 		$memberinfo = $this->memberinfo;
+
 		//初始化phpsso
 		$phpsso_api_url = $this->_init_phpsso();
 		//获取头像数组
@@ -572,9 +573,9 @@ class index extends foreground {
 			
 			if(pc_base::load_config('system', 'phpsso')) {
 				$this->_init_phpsso();
+
 				$status = $this->client->ps_member_login($username, $password);
 				$memberinfo = unserialize($status);
-				
 				if(isset($memberinfo['uid'])) {
 					//查询帐号
 					$r = $this->db->get_one(array('phpssouid'=>$memberinfo['uid']));
@@ -760,7 +761,24 @@ class index extends foreground {
 			include template('member', 'favorite_list');
 		}
 	}
-	
+	/**
+	 * 我的错题
+	 * 
+	 */
+	public function wrongtopic() {
+		$this->wrongtopic_db = pc_base::load_model('wrongtopic_model');
+		$memberinfo = $this->memberinfo;
+		if(isset($_GET['id']) && trim($_GET['id'])) {
+			$this->wrongtopic_db->delete(array('userid'=>$memberinfo['userid'], 'id'=>intval($_GET['id'])));
+			showmessage(L('operation_success'), HTTP_REFERER);
+		} else {
+			$page = isset($_GET['page']) && trim($_GET['page']) ? intval($_GET['page']) : 1;
+			$wrongtopiclist = $this->wrongtopic_db->listinfo(array('userid'=>$memberinfo['userid']), 'id DESC', $page, 10);
+			$pages = $this->fwrongtopic_db->pages;
+
+			include template('member', 'wrongtopic_list');
+		}
+	}
 	/**
 	 * 我的好友
 	 */
@@ -1672,5 +1690,6 @@ class index extends foreground {
  			include template('member', 'forget_password_mobile');
 		}
 	}
+
 }
 ?>

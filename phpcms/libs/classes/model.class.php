@@ -58,7 +58,7 @@ class model {
 		$this->number = $this->count($where);
 		$page = max(intval($page), 1);
 		$offset = $pagesize*($page-1);
-		$this->pages = pages($this->number, $page, $pagesize, $urlrule, $array, $setpages);
+		// $this->pages = pages($this->number, $page, $pagesize, $urlrule, $array, $setpages);
 		$array = array();
 		if ($this->number > 0) {
 			return $this->select($where, '*', "$offset, $pagesize", $order, '', $key);
