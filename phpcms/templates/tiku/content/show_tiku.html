@@ -84,7 +84,10 @@
         ?>
         <div class="onlinequizct">
         <h2 class="tiku_title">{$title}</h2>
-        <div class="tikuctj"><a href="/goshouye.php?m=member&c=index&a=wrongtopic" target="_blank" class="a1">我的错题集</a><a href="/goshouye.php?m=member&c=index&a=favorite&t=2" target="_blank" class="a2">我的收藏</a></div>
+        <div class="tikuctj">
+        	<a href="/goshouye.php?m=member&c=index&a=wrongtopic" target="_blank" class="a1">我的错题集</a><a href="/goshouye.php?m=member&c=index&a=favorite&t=2" target="_blank" class="a2">我的收藏</a>
+        	<div class="tikusxfy"><a href="{$previous_page[url]}" class="a3">上一题</a><a href="{$next_page[url]}" class="a4">下一题</a></div>
+        </div>
         <div class="tikunum"><span>{$listorder}</span>{$title}</div>
         <ul class="tiku_aw_list" id="tikulist">
             {loop $answerow $k $v}

@@ -24,8 +24,10 @@ $(function(){
 //-->
 </script>
 
+
 <link href="{CSS_PATH}dialog_simp.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
+body{ padding-top:40px;}
 .submit,.pass-logo a,.form-login .input label,.item span{display:inline-block;zoom:1;*display:inline;}
 .blue,.blue a{color:#377abe}
 .log{line-height:24px; height:24px;float:right; font-size:12px}
@@ -35,12 +37,12 @@ $(function(){
 #header{ height:94px; background:url({IMG_PATH}member/h.png) repeat-x}
 #header .logo{ padding-right:100px;float:left;background:url({IMG_PATH}member/login-logo.png) no-repeat right 2px;}
 #header .content{width:920px; margin:auto; height:60px;padding:10px 0 0 0}
-#content{width:920px; margin:auto; padding:36px 0 0 0}
 .form-login{ width:440px; padding-left:40px}
 .form-login h2{font-size:25px;color:#494949;border-bottom: 1px dashed #CCC;padding-bottom:3px; margin-bottom:10px}
 .form-login .input{ padding:7px 0}
 .form-login .input label{ width:84px;font-size:14px; color:#888; text-align:right}
 .take,.reg{padding:0 0 0 84px}
+.take{ color:#888888;}
 .take .submit{ margin-top:10px}
 .form-login .hr{background: url({IMG_PATH}member/line.png) no-repeat left center; height:50px;}
 .form-login .hr hr{ display:none}
@@ -79,66 +81,36 @@ $(function(){
 </head>
 <body>
 {template "content","tiku_header"}
-<div id="content">
-<div class="col-left form-login" id="logindiv">
-<form method="post" action="" onsubmit="save_username();" id="myform" name="myform">
-<input type="hidden" name="forward" id="forward" value="{$forward}">
-    	<h2>{L('member').L('login')}</h2>
-    	<div class="input">
-			<label>{L('username')}：</label><input type="text" id="username" name="username" size="22" class="input-text">
-		</div>
-        <div class="input">
-			<label>{L('password')}：</label><input type="password" id="password" name="password" size="22" class="input-text">
-		</div>
-        <div class="input">
-			<label>{L('checkcode')}：</label><input type="text" id="code" name="code" size="8" class="input-text">{form::checkcode('code_img', '4', '14', 84, 24)}
-		</div>
-        <div class="take">
-		<input type="checkbox" name="cookietime" value="2592000" id="cookietime"> {L('remember')}{L('username')}
-		<br />
-		<div class="submit"><input type="submit" name="dosubmit" id="dosubmit" value="{L('login')}"></div></div>
-        <div class="hr"><hr /></div>
-        <div class="reg">{L('no_phpcms_account')}<br />
-        	<div class="submit"><input type="button" name="register" value="{L('immediately').L('register')}" onclick="redirect('{APP_PATH}index.php?m=member&c=index&a=register&siteid={$siteid}')"></div></div>
-</form>
-</div>
-    <div class="col-auto">
-			{if $setting['connect_enable']}
-    		<div class="col-1" style="display:none">
-            	<div class="content">
-                	<h5><strong>{L('use_passport')}</strong></h5>
-                    <div class="pass-logo">
-                    	<ul class="item login-list clear blue">
-                        {if $setting['snda_akey'] || $setting['snda_skey']}
-                        	<li style="margin-right:14px;"><a href="javascript:;" onclick="show_login('snda');return false;" style="background-image:url({IMG_PATH}member/logo/snda_16_16.png)">盛大通行证</a></li>
-                        {/if}
-                        {if $setting['sina_akey'] || $setting['sina_skey']}
-                            <li><a href="javascript:;" onclick="show_login('sina');return false;" style="background-image:url({IMG_PATH}member/logo/sina_16_16.png)">新浪微博登录</a></li>
-                        {/if}
-
-						{if $setting['qq_akey'] || $setting['qq_skey']}
-                        	<li style="margin-right:14px;"><a href="javascript:;" onclick="show_login('qq');return false;" style="background-image:url({IMG_PATH}member/logo/qq_16_16.png)">腾讯微博登录</a></li>
-						{/if}
-						{if $setting['qq_appkey'] || $setting['qq_appid']}
-                        	<li style="margin-right:14px;"><a href="{APP_PATH}index.php?m=member&c=index&a=public_qq_loginnew" target="_blank" style="background-image:url({IMG_PATH}member/logo/qq_16_16.png)">腾讯QQ登录</a></li>
-						{/if}
-                        </ul>
-                        <p>
-                        	<span class="blue">{L('other_passport_introduce')}</span>
-                            <br />
-							{L('other_passport_info')}
-                        </p>
-                    </div>
-       	        </div>
-            	<span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+<div class="loginbg">
+<div class="rskscenter">
+    <div class="loginbg" id="content">
+        <div class="insurancecenter loginpd">
+            <div class="logindv">
+                <div class="loginlf" id="logindiv">
+                    <span class="lgicon"></span>
+                    <form method="post" action="" onsubmit="save_username();" id="myform" name="myform">
+                        <input type="hidden" name="forward" id="forward" value="{$forward}">
+                        <div class="dvtyip tiku_mg"><span class="font-size16">{L('username')}：</span><input type="text" id="username" name="username" size="22" class="logintxt" placeholder="请输入您的用户名" /></div>
+                        <div class="dvtyip tiku_mg"><span class="font-size16">{L('password')}：</span><input type="password" id="password" name="password" size="22" class="logintxt" placeholder="请输入您的密码" /></div>
+                        <div class="dvtyip tiku_mg"><span class="font-size16">{L('checkcode')}：</span><input type="text" id="code" name="code" size="8" class="logintxt" placeholder="请输入验证码" />{form::checkcode('code_img', '4', '14', 84, 24)}</div>
+                        <div class="take">
+                        <input type="checkbox" name="cookietime" value="2592000" id="cookietime"> {L('remember')}{L('username')}
+                        <br />
+                        <div class="dldv"><input type="submit" name="dosubmit" id="dosubmit" value="{L('login')}" class="loginbtn"></div></div>
+                    </form>
+                </div>
+                <div class="loginrg">
+                    <div class="dvtitle font-size16">{L('no_phpcms_account')}</div>
+                    <div class="dvzc font-size18"><a href="javascript:void(0)" onclick="redirect('{APP_PATH}goshouye.php?m=member&c=index&a=register&siteid={$siteid}')">立即注册</a></div>
+                </div>
+                
+                <div class="clear"></div>
             </div>
-			{else}
-			<div class="col-1">
-			<script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=2"></script>
-			</div>
-			{/if}
+        </div>
     </div>
 </div>
+</div>
+
 
 <script language="JavaScript">
 <!--
@@ -177,3 +149,15 @@ $(function(){
 </script>
 <div style=" clear:both; text-align:center">
 {template 'content', 'tiku_footer'}</div>
+<script language="javascript">
+jQuery(document).ready(function(){
+	var doc=document,inputs=doc.getElementsByTagName('input'),supportPlaceholder='placeholder'in doc.createElement('input'),placeholder=function(input){var text=input.getAttribute('placeholder'),defaultValue=input.defaultValue;
+	if(defaultValue==''){
+	input.value=text}
+	input.onfocus=function(){
+	if(input.value===text){this.value=''}};
+	input.onblur=function(){if(input.value===''){this.value=text}}};
+	if(!supportPlaceholder){
+	for(var i=0,len=inputs.length;i<len;i++){var input=inputs[i],text=input.getAttribute('placeholder');
+	if(input.type==='text'&& text) {placeholder(input)}}}});
+</script>

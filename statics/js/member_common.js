@@ -17,11 +17,12 @@ function show_element(name) {
 	$('#'+name+'').fadeIn("slow");
 }
 
+/**
 $(document).ready(function(){
 　　$("input.input-text").blur(function () { this.className='input-text'; } );
 　　$(":text").focus(function(){this.className='input-focus';});
 });
-
+*/
 /**
  * url跳转
  */

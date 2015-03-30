@@ -9,6 +9,7 @@
 <script type="text/javascript" src="{JS_PATH}formvalidator.js" charset="UTF-8"></script>
 <script type="text/javascript" src="{JS_PATH}formvalidatorregex.js" charset="UTF-8"></script>
 <script type="text/javascript" src="{JS_PATH}dialog.js"></script>
+<link type="text/css" rel="stylesheet" href="/statics/tiku/css/new_rsks.css" />
 <link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
 <link href="{CSS_PATH}dialog_simp.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript">
@@ -103,16 +104,17 @@ $(function(){
 	{/if}
 });
 
-function show_protocol() {
+/*function show_protocol() {
 	art.dialog({lock:false,title:'{L('register_protocol')}',id:'protocoliframe', iframe:'?m=member&c=index&a=register&protocol=1',width:'500',height:'310',yesText:'{L('agree')}'}, function(){
 		$("#protocol").attr("checked",true);
 	});
 }
-
+**/
 //-->
 </script>
 <link href="{CSS_PATH}table_form.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
+body{ padding-top:40px;}
 .submit,.pass-logo a,.form-login .input label,.item span,#content h2 span em{display:inline-block;display:-moz-inline-stack;zoom:1;*display:inline;}
 .blue,.blue a{color:#377abe},.submit input{cursor:hand;}
 .log{line-height:24px; height:24px;float:right; font-size:12px}
@@ -122,7 +124,7 @@ function show_protocol() {
 #header{ height:94px; background:url({IMG_PATH}member/h.png) repeat-x}
 #header .logo{ padding-right:100px;float:left;background:url({IMG_PATH}member/login-logo.png) no-repeat right 2px;}
 #header .content{width:920px; margin:auto; height:60px;padding:10px 0 0 0}
-#content{width:920px; margin:auto; padding:20px 0 0 0; overflow:auto}
+#content{width:998px; border:1px #c6cbcf solid; background:#f8fdff;}
 .form-login{width:420px; padding-left:40px}
 #content h2{font-size:25px;color:#494949;border-bottom: 1px dashed #CCC;padding-bottom:3px; margin-bottom:10px}
 #content h2 span{font-size:12px; font-weight:normal}
@@ -138,20 +140,15 @@ function show_protocol() {
 .form-login .hr{background: url({IMG_PATH}member/line.png) no-repeat left center; height:50px;}
 .form-login .hr hr{ display:none}
 
-.form-reg{padding:10px 0 0 14px; width:700px; border-right:1px solid #ccc}
+.form-reg{padding:50px 0 0 100px; width:600px; border-right:1px solid #ccc}
 .form-reg .input label{ width:120px}
 .form-reg .input label.type{ width:auto; color:#000; padding-right:10px}
-.form-reg .reg{padding:10px 0 0 120px}
+.form-reg .reg{padding:10px 0 10px 87px}
 .form-reg .reg .submit{ margin-bottom:5px}
 
-.submit{padding-left:3px}
-.submit,.submit input{ background: url({IMG_PATH}member/but.png) no-repeat; height:29px;width:auto;_width:0;overflow:visible !ie}
-.submit input{background-position: right top; border:none; padding:0 10px 0 7px; font-size:14px}
-.reg{ color:#666; line-height:24px}
-.reg .submit{background-position: left -35px; height:35px}
-.reg .submit input{background-position: right -35px; font-weight:700; color:#fff; height:35px}
+.submit{padding-left:3px; clear:both;}
 .reg-auto{ padding:10px 0 0 20px}
-.reg-auto p{ margin-bottom:10px; color:#666;}
+.reg-auto p{ color:#666;}
 .col-1{position:relative; float:right; border:1px solid #c4d5df; zoom:1;background: url({IMG_PATH}member/member_title.png) repeat-x; width:310px; margin: auto; height:304px}
 .col-1 span.o1,
 	.col-1 span.o2,
@@ -207,179 +204,186 @@ function show_protocol() {
 </style>
 </head>
 <body>
-<div id="header">
-	<div class="content">
-	<div class="logo"><img src="{IMG_PATH}v9/logo.jpg"/></div>
-    <span class="log"></span>
-    </div>
-</div>
+{template "content","tiku_header"}
 
-<div id="content">
-	<h2>{L('member').L('register')}&nbsp;&nbsp;&nbsp;&nbsp;<span {if !isset($_GET['t'])}class="on"{/if}><em>1</em>{L('fill_in').L('info')}</span>
-	{if $member_setting['enablemailcheck']}
-	<span {if isset($_GET['t']) && $_GET['t']==2}class="on"{/if}><em>2</em>{L('email').L('validate')}</span>
-	<span><em>3</em>{L('register').L('success')}</span>
-	{elseif $member_setting['registerverify']}
-	<span class="on"><em>2</em>{L('administrator').L('verify')}</span><span> <em>3</em>{L('register').L('success')}</span>
-	{/if}
-	</h2>
-
-{if !isset($_GET['t'])}
-<form method="post" action="" id="myform">
-	<input type="hidden" name="siteid" value="{$siteid}" />
-
-	<div class="col-left form-login form-reg">
-
-		{if $member_setting['choosemodel']}
-		<!--是否开启选择会员模型选项-->
-    	<div class="point">
-            <div class="content">
-				<strong class="title">{L('notice')}</strong>
-				<p>{L('register_notice')}</p>
-				<p>{$description}</p>
-            </div>
-            <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
-        </div>
-
-		<div class="input"><label>{L('member_model')}：</label>
-			{loop $modellist $k $v}
-			<label class="type"><input name="modelid" type="radio" value="{$k}" {if $k==$modelid}checked{/if} onclick="changemodel($(this).val())" />{$v['name']}</label>
-			{/loop}
-		</div>
-		{/if}
-
-    	<div class="input"><label>{L('username')}：</label><input type="text" id="username" name="username" size="36" class="input-text"></div>
-        <div class="input"><label>{L('password')}：</label><input type="password" id="password" name="password" size="36" class="input-text"></div>
-        <div class="input"><label>{L('cofirmpwd')}：</label><input type="password" name="pwdconfirm" id="pwdconfirm" size="36" class="input-text"></div>
-        <div class="input"><label>{L('email')}：</label><input type="text" id="email" name="email" size="36" class="input-text"></div>
-		<div class="input"><label>{L('nickname')}：</label><input type="text" id="nickname" name="nickname" size="36" class="input-text"></div>
-		{if $member_setting['choosemodel']}
-			<!--是否开启选择会员模型选项-->
-			<script language="JavaScript">
-			<!--
-				function changemodel(modelid) {
-					redirect('{APP_PATH}index.php?m=member&c=index&a=register&modelid='+modelid+'&siteid={$siteid}');
-				}
-			//-->
-			</script>
-
-			{loop $forminfos $k $v}
-				<div class="input"><label>{if $v['isbase']}<font color=red>*</font>{/if} {$v['name']}：{if $v['tips']}<br />({$v['tips']}){/if}</label><div class="form">{$v['form']}</div></div>
-			{/loop}
-		{/if}
-		{if $member_setting['mobile_checktype']=='1' && $sms_setting['sms_enable']=='1'}
-			<div class="input"><label>手机验证：：</label>
-			<font color="red">{$member_setting['user_sendsms_title']}</font>
-			</div>
-			<div class="input"><label>短信验证码：：</label><input type="text" name="mobile_verify" id="mobile_verify" value="" size="14" class="input-text"></div>
-		{/if}
-		
-		{if $member_setting['mobile_checktype']=='2' && $sms_setting['sms_enable']=='1'}
-		<div class="input"><label> 手机号码：</label><div class="form"><div id="mobile_div"><input type="text" name="mobile" id="mobile" value="" size="36" class="input-text" title="此服务免费,验证码将以短信免费发送到您的手机"> 
-			<div class="submit"><button onclick="get_verify()" type="button" class="hqyz">获取短信验证码</button></div> 
-			<br>
-			</div>
-			<div id="mobile_send_div" style="display:none">此服务免费,验证码已发送到<span id="mobile_send"></span>，<span id="edit_mobile" style="display:none"><a href="javascript:void();" onclick="edit_mobile()">修改号码</a>，</span> 如果超过90秒未收到验证码，您可以免费重新获取。<br><br>
-			<div class="submit"><button type="button" id="GetVerify" onclick="get_verify()" class="hqyz">重获短信验证码</button></div> <br><br></div> 
-			<script language="JavaScript">
-			<!--
-				var times = 90;
-				var isinerval;
-				function get_verify() {
-					var mobile = $("#mobile").val();
-					var partten = /^1[3-9]\d{9}$/;
-					if(!partten.test(mobile)){
-						alert("请输入正确的手机号码");
-						return false;
-					}
-					$.get("kapi.php?op=sms",{ mobile: mobile,random:Math.random()}, function(data){
-						if(data=="0") {
-							$("#mobile_send").html(mobile);
-							$("#mobile_div").css("display","none");
-							$("#mobile_send_div").css("display","");
-							times = 90;
-							$("#GetVerify").attr("disabled", true);
-							isinerval = setInterval("CountDown()", 1000);
-						} else if(data=="-1") {
-							alert("你今天获取验证码次数已达到上限");
-						} else {
-							alert("短信发送失败");
-						}
-					});
-					
-				}
-				function CountDown() {
-					if (times < 1) {
-						$("#GetVerify").html("获取短信验证码").attr("disabled", false);
-						$("#edit_mobile").css("display","");
-						clearInterval(isinerval);
-						return;
-					}
-					$("#GetVerify").html(times+"秒后重获验证码");
-					times--;
-				}
-				function edit_mobile() {
-					$("#mobile_div").css("display","");
-					$("#mobile_send_div").css("display","none");
-				}
-			//-->
-			</script>
-		    </div></div>
-			<div class="input"><label>短信验证码：：</label><input type="text" name="mobile_verify" id="mobile_verify" value="" size="14" class="input-text"></div>	
-		
-		{/if}
-		
-		{if $member_setting['enablcodecheck']=='1'}
-		<div class="input"><label>{L('checkcode')}：</label><input type="text" id="code" name="code" size="10" class="input-text">{form::checkcode('code_img', '4', '14', 80, 24)}</div>
-		{/if}
-		
-		
-		<!-- 注释验证码
+<div class="loginbg">
+	<div class="rskscenter">
+        <div id="content" class="logindv">
+        {if !isset($_GET['t'])}
+        <form method="post" action="" id="myform">
+            <input type="hidden" name="siteid" value="{$siteid}" />
         
-		-->
-        	<div class="reg">
-                <div class="submit"><input type="submit" name="dosubmit" value="{L('agree_protocol_post')}"></div><br />
-                <input type="checkbox" name="protocol" id="protocol" value=""><a href="javascript:void(0);" onclick="show_protocol();return false;" class="blue">{L('click_read_protocol')}</a>
-            </div>
+            <div class="col-left form-login form-reg">
+        		<span class="lgicon regicon"></span>
+                {if $member_setting['choosemodel']}
+                <!--是否开启选择会员模型选项-->
+                <div class="point">
+                    <div class="content">
+                        <strong class="title">{L('notice')}</strong>
+                        <p>{L('register_notice')}</p>
+                        <p>{$description}</p>
+                    </div>
+                    <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+                </div>
+        
+                <div class="input"><label>{L('member_model')}：</label>
+                    {loop $modellist $k $v}
+                    <label class="type"><input name="modelid" type="radio" value="{$k}" {if $k==$modelid}checked{/if} onclick="changemodel($(this).val())" />{$v['name']}</label>
+                    {/loop}
+                </div>
+                {/if}
+        
+                <div class="dvtyip tiku_mg"><span class="font-size16">{L('username')}：</span><input type="text" id="username" name="username" size="36" class="logintxt" placeholder="请输入您的用户名"></div>
+                <div class="dvtyip tiku_mg"><span class="font-size16">{L('password')}：</span><input type="password" id="password" name="password" size="36" class="logintxt" placeholder="请输入您的密码"></div>
+                <div class="dvtyip tiku_mg"><span class="font-size16">{L('cofirmpwd')}：</span><input type="password" name="pwdconfirm" id="pwdconfirm" size="36" class="logintxt" placeholder="请再次确认您的密码"></div>
+                <div class="dvtyip tiku_mg"><span class="font-size16">{L('email')}：</span><input type="text" id="email" name="email" size="36" class="logintxt" placeholder="请输入您常用的邮箱"></div>
+                <div class="dvtyip tiku_mg"><span class="font-size16">{L('nickname')}：</span><input type="text" id="nickname" name="nickname" size="36" class="logintxt" placeholder="请输入您的昵称"></div>
+                {if $member_setting['choosemodel']}
+                    <!--是否开启选择会员模型选项-->
+                    <script language="JavaScript">
+                    <!--
+                        function changemodel(modelid) {
+                            redirect('{APP_PATH}index.php?m=member&c=index&a=register&modelid='+modelid+'&siteid={$siteid}');
+                        }
+                    //-->
+                    </script>
+        
+                    {loop $forminfos $k $v}
+                        <div class="input"><label>{if $v['isbase']}<font color=red>*</font>{/if} {$v['name']}：{if $v['tips']}<br />({$v['tips']}){/if}</label><div class="form">{$v['form']}</div></div>
+                    {/loop}
+                {/if}
+                {if $member_setting['mobile_checktype']=='1' && $sms_setting['sms_enable']=='1'}
+                    <div class="input"><label>手机验证：：</label>
+                    <font color="red">{$member_setting['user_sendsms_title']}</font>
+                    </div>
+                    <div class="input"><label>短信验证码：：</label><input type="text" name="mobile_verify" id="mobile_verify" value="" size="14" class="logintxt"></div>
+                {/if}
+                
+                {if $member_setting['mobile_checktype']=='2' && $sms_setting['sms_enable']=='1'}
+                <div class="input"><label> 手机号码：</label><div class="form"><div id="mobile_div"><input type="text" name="mobile" id="mobile" value="" size="36" class="logintxt" title="此服务免费,验证码将以短信免费发送到您的手机"> 
+                    <div class="submit"><button onclick="get_verify()" type="button" class="hqyz">获取短信验证码</button></div> 
+                    <br>
+                    </div>
+                    <div id="mobile_send_div" style="display:none">此服务免费,验证码已发送到<span id="mobile_send"></span>，<span id="edit_mobile" style="display:none"><a href="javascript:void();" onclick="edit_mobile()">修改号码</a>，</span> 如果超过90秒未收到验证码，您可以免费重新获取。<br><br>
+                    <div class="submit"><button type="button" id="GetVerify" onclick="get_verify()" class="hqyz">重获短信验证码</button></div> <br><br></div> 
+                    <script language="JavaScript">
+                    <!--
+                        var times = 90;
+                        var isinerval;
+                        function get_verify() {
+                            var mobile = $("#mobile").val();
+                            var partten = /^1[3-9]\d{9}$/;
+                            if(!partten.test(mobile)){
+                                alert("请输入正确的手机号码");
+                                return false;
+                            }
+                            $.get("kapi.php?op=sms",{ mobile: mobile,random:Math.random()}, function(data){
+                                if(data=="0") {
+                                    $("#mobile_send").html(mobile);
+                                    $("#mobile_div").css("display","none");
+                                    $("#mobile_send_div").css("display","");
+                                    times = 90;
+                                    $("#GetVerify").attr("disabled", true);
+                                    isinerval = setInterval("CountDown()", 1000);
+                                } else if(data=="-1") {
+                                    alert("你今天获取验证码次数已达到上限");
+                                } else {
+                                    alert("短信发送失败");
+                                }
+                            });
+                            
+                        }
+                        function CountDown() {
+                            if (times < 1) {
+                                $("#GetVerify").html("获取短信验证码").attr("disabled", false);
+                                $("#edit_mobile").css("display","");
+                                clearInterval(isinerval);
+                                return;
+                            }
+                            $("#GetVerify").html(times+"秒后重获验证码");
+                            times--;
+                        }
+                        function edit_mobile() {
+                            $("#mobile_div").css("display","");
+                            $("#mobile_send_div").css("display","none");
+                        }
+                    //-->
+                    </script>
+                    </div></div>
+                    <div class="input"><label>短信验证码：：</label><input type="text" name="mobile_verify" id="mobile_verify" value="" size="14" class="logintxt"></div>	
+                
+                {/if}
+                
+                {if $member_setting['enablcodecheck']=='1'}
+                <div class="input"><label>{L('checkcode')}：</label><input type="text" id="code" name="code" size="10" class="logintxt">{form::checkcode('code_img', '4', '14', 80, 24)}</div>
+                {/if}
+                
+                
+                <!-- 注释验证码
+                
+                -->
+                    <div class="reg">
+                    	<div class="regty"><input type="checkbox" name="protocol" id="protocol" value=""><a href="javascript:void(0);" onclick="show_protocol();return false;" class="blue">{L('click_read_protocol')}</a></div>
+                        <div class="clear"></div>
+                        <div class="submit"><input type="submit" name="dosubmit" class="loginbtn" value="{L('agree_protocol_post')}"></div>
+                        
+                        <div class="clear"></div>
+                    </div>
+                </div>
+        </form>
+        {elseif isset($_GET['t']) && $_GET['t']==2}
+        <div class="col-left form-login form-reg">
+        {php $emailurl = param::get_cookie('email') ? str_replace('@', '',strstr(param::get_cookie('email'), '@')) : '';}
+        {param::get_cookie('_username')} {L('hellow')}，{L('login_email_authentication')} {if $emailurl} {L('please_click')}<a href="http://mail.{$emailurl}">{L('login_email')}</a><br><br>
+        重新填写邮箱请点击<a onclick="$('#send_newemail').show()"><font color="red">这里</font></a><br><br>
+        <div style="display:none" id="send_newemail">
+        <input type="text" id="newemail" name="newemail" size="36" class="logintxt"> 
+        <div class="submit"><input type="submit" name="dosubmit" value="重新发送新邮箱验证" onclick="javascript:send_newmail();"></div></div>
+        <script language="JavaScript">
+        function send_newmail() {
+            //var mail_type = $('input[checkbox=mail_type][checked]').val();
+            var newemail = $('#newemail').val();
+         $.post('?m=member&c=index&a=send_newmail&newemail='+newemail,{},function(data){
+            if(data=='1'){alert('发送成功，请查看验证！');}else if(data=='-1'){alert('邮箱已被占用！');}else{alert('发送错误，请联系管理员！');}
+            });
+        } 
+        </script>
+        {/if}
         </div>
-</form>
-{elseif isset($_GET['t']) && $_GET['t']==2}
-<div class="col-left form-login form-reg">
-{php $emailurl = param::get_cookie('email') ? str_replace('@', '',strstr(param::get_cookie('email'), '@')) : '';}
-{param::get_cookie('_username')} {L('hellow')}，{L('login_email_authentication')} {if $emailurl} {L('please_click')}<a href="http://mail.{$emailurl}">{L('login_email')}</a><br><br>
-重新填写邮箱请点击<a onclick="$('#send_newemail').show()"><font color="red">这里</font></a><br><br>
-<div style="display:none" id="send_newemail">
-<input type="text" id="newemail" name="newemail" size="36" class="input-text"> 
-<div class="submit"><input type="submit" name="dosubmit" value="重新发送新邮箱验证" onclick="javascript:send_newmail();"></div></div>
-<script language="JavaScript">
-function send_newmail() {
-	//var mail_type = $('input[checkbox=mail_type][checked]').val();
-	var newemail = $('#newemail').val();
- $.post('?m=member&c=index&a=send_newmail&newemail='+newemail,{},function(data){
- 	if(data=='1'){alert('发送成功，请查看验证！');}else if(data=='-1'){alert('邮箱已被占用！');}else{alert('发送错误，请联系管理员！');}
-	});
-} 
-</script>
-{/if}
-</div>
-{elseif isset($_GET['t']) && $_GET['t']==3}
-<div class="col-left form-login form-reg">
-{param::get_cookie('_username')} {L('hellow')}，{L('please_wait_administrator_verify')}
-</div>
-{else}
-<script language="JavaScript">
-<!--
-	redirect("{APP_PATH}index.php?m=member&c=index&a=login");
-//-->
-</script>
-{/if}
-
-    <div class="col-auto reg-auto">
-    	<p class="f14">
-        {L('already_have_account')}
-        </p>
-        <div class="submit"><input type="submit" name="dosubmit" value="{L('login')}" onclick="redirect('{APP_PATH}index.php?m=member&c=index&a=login')"></div>
-    </div>
+        {elseif isset($_GET['t']) && $_GET['t']==3}
+        <div class="col-left form-login form-reg">
+        {param::get_cookie('_username')} {L('hellow')}，{L('please_wait_administrator_verify')}
+        </div>
+        {else}
+        <script language="JavaScript">
+        <!--
+            redirect("{APP_PATH}index.php?m=member&c=index&a=login");
+        //-->
+        </script>
+        {/if}
+        
+            <div class="col-auto reg-auto">
+                <p class="f14 rgline">
+                {L('already_have_account')}
+                </p>
+                <div class="dvzc font-size18"><a onclick="redirect('{APP_PATH}goshouye.php?m=member&c=index&a=login')" href="javascript:void(0)">立即登录</a></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        
+	</div>
 </div>
 
-{template 'member', 'footer'}
+{template 'content', 'tiku_footer'}
+<script language="javascript">
+jQuery(document).ready(function(){
+	var doc=document,inputs=doc.getElementsByTagName('input'),supportPlaceholder='placeholder'in doc.createElement('input'),placeholder=function(input){var text=input.getAttribute('placeholder'),defaultValue=input.defaultValue;
+	if(defaultValue==''){
+	input.value=text}
+	input.onfocus=function(){
+	if(input.value===text){this.value=''}};
+	input.onblur=function(){if(input.value===''){this.value=text}}};
+	if(!supportPlaceholder){
+	for(var i=0,len=inputs.length;i<len;i++){var input=inputs[i],text=input.getAttribute('placeholder');
+	if(input.type==='text'&& text) {placeholder(input)}}}});
+</script>

@@ -1,5 +1,6 @@
-body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;word-wrap:break-word}
-body,html,input{font:12px/1.5 tahoma,arial,\5b8b\4f53,sans-serif;}
+
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,textarea,th,td{margin:0;padding:0;}
+body,html,input{font-size:12px; font-family:"Microsoft YaHei",微软雅黑;}
 table{border-collapse:collapse;border-spacing:0;}img{border:none}
 pre {white-space: pre-wrap; /* css-3 */white-space: -moz-pre-wrap; /* Mozilla, since 1999 */white-space: -pre-wrap; /* Opera 4-6 */white-space: -o-pre-wrap; /* Opera 7 */	word-wrap: break-word; /* Internet Explorer 5.5+ */}
 h1,h2,h3,h4,h5,h6{font-size:100%;}input.dialog{height:0; height:0; font-size:0; line-height:0; border:none}
@@ -14,7 +15,11 @@ a:hover{text-decoration:underline;}
 .red, .red a, a.red{color:red;}.green{color:#0E774A}
 select optgroup{color:#CAC8BB;}
 header{ display:block}
-/*通用样式*/
+/*閫氱敤鏍峰紡*/
+.hidden{display:none;}.invisible{visibility:hidden;}
+.ib,.ib-a a{display:inline-block;zoom:1;*display:inline;}
+.clear:after,.main:after{content:".";display:block;height:0;clear:both;visibility:hidden;}.clear,.main{display:inline-block;}/* Hides from IE-mac \*/* html .clear,* html .main{height:1%;}.clear,.main{display:block;}
+
 .hidden{display:none;}.invisible{visibility:hidden;}
 .ib,.ib-a a{display:inline-block;zoom:1;*display:inline;}
 .clear:after,.main:after{content:".";display:block;height:0;clear:both;visibility:hidden;}.clear,.main{display:inline-block;}/* Hides from IE-mac \*/* html .clear,* html .main{height:1%;}.clear,.main{display:block;}
@@ -31,6 +36,13 @@ header{ display:block}
 .img-wrap{border:1px solid #eee;text-align:center;overflow:hidden}
 .img-wrap a{display:table-cell;vertical-align:middle;*display:block; overflow:hidden; background-color:#fff}
 .img-wrap a:hover{ background-color:#e8eff6}
-.col-left{float:left}
+.col-left{float:left; background:#ffffff;}
 .col-auto{overflow:hidden;_zoom:1;_float:left;}
 .col-right{float:right}
+.rgline{ border-bottom:1px #d9d9d9 solid; padding-bottom:10px; margin:0 10px 20px 0;}
+.aui_titleBar{ position:relative;}
+.aui_title{ height:38px; line-height:38px; background:#f0f0f0; font-size:18px; padding-left:10px; border-radius:3px 3px 0 0;}
+.aui_close{ font-size:18px; position:absolute; right:10px; top:6px; width:20px; height:20px;}
+.aui_buttons { padding:5px 0;}
+.aui_state_highlight{ width:80px; height:30px;}
+#con

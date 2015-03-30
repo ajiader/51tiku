@@ -217,15 +217,56 @@ ul.pd0{ padding:0px;}
 #result span strong{ margin-top:4px;}
 .tikunum{ padding:20px 20px 20px 10px; font-size:18px; border-bottom:1px #e2e7f5 dashed;  margin:0 10px;}
 .tikunum span{ display:inline-block; width:28px; text-align:center; height:28px; background:#008dc7; border-radius:5px; color:#ffffff; margin-right:10px;}
-.tikuctj{ padding:15px 20px; background:#f9f9f9;}
+.tikuctj{ padding:15px 20px; background:#f9f9f9; position:relative;}
 .tikuctj a{ display:inline-block; width:101px; height:30px; background-image:url(../images/tiku_btn.gif); background-repeat:no-repeat; text-align:center; line-height:27px; color:#ffffff; margin-right:10px;}
+.tikuctj a:hover{ text-decoration:none;}
 .tikuctj a.a1{ background-position:0 -228px;}
-.tikuctj a.a1:hover{ background-position:0 -267px; text-decoration:none;}
+.tikuctj a.a1:hover{ background-position:0 -267px;}
 .tikuctj a.a2{ background-position:-107px -228px;}
-.tikuctj a.a2:hover{ background-position:-107px -267px; text-decoration:none;}
+.tikuctj a.a2:hover{ background-position:-107px -267px;}
+.tikuctj a.a3{ background-position:-107px -304px;}
+.tikuctj a.a4{ background-position:0px -343px;}
+.tikuctj a.a3,.tikuctj a.a4{ font-size:14px;}
+.tikuctj .tikusxfy{ position:absolute; right:10px; top:15px;}
 .tikurgls{ border:1px #d9d9d9 solid; padding:10px 0 3px 0;}
 .tikurgls ul li{ float:left; width:36px; height:36px; margin:0 0 7px 7px; display:inline;}
 .tikurgls ul li a{ display:block; height:36px; background-image:url(../images/tiku_btn.gif); background-repeat:no-repeat; background-position:-176px -120px; text-align:center; line-height:37px; font-size:16px;}
 .tikurgls ul li a:hover,.tikurgls ul li a.selected{ background-position:-176px -164px; text-decoration:none; color:#ffffff;}
 .tikurgls .dvfy{ text-align:center; padding:8px 0; border-top:1px #d9d9d9 dashed;}
 .tikurgls .dvfy a{ display:inline-block; background-image:url(../images/tiku_btn.gif); background-repeat:no-repeat; background-position:0 -306px; width:101px; height:30px; line-height:28px; margin-right:6px; }
+
+.loginbg{ background:url(../images/yc_bg.jpg) repeat-x left top; margin:20px 0;}
+.logindv{ background:#f8fdff; border:1px #c6cbcf solid; position:relative; width:998px;}
+.logindv span.lgicon{ width:142px; height:147px; position:absolute; left:-8px; top:-7px; background:url(../images/login_icon.png) no-repeat;}
+.logindv span.regicon{ background:url(../images/reg_icon.png) no-repeat; z-index:1;}
+.loginlf{ width:600px; border-right:1px #c6cbcf solid; float:left; padding:50px 0 20px 110px; background:#ffffff;}
+.dvtyip{ line-height:50px; height:52px;}
+.dvtyip span{ float:left; width:80px; text-align:right; margin-right:10px;}
+.dvtyip input.logintxt,.tf_tby input.tbtxt,.tf_tby .seldv input.selectip{ font-size:18px; float:left; border-left:1px #d3d3d3 solid; border-right:1px #d3d3d3 solid; border-top:1px #c2c2c2 solid; border-bottom:1px #e6e6e6 solid; background:url(../images/inputbg.jpg) repeat-x left -1px; height:48px; width:273px; padding-left:15px; line-height:48px;  color:#666666; font-family:微软雅黑;}
+.dvtyip input.ipwd1{ width:181px;border-right:0px;}
+.dvtyip span.yzm{ width:138px; height:52px; background-position:0 -301px; margin-right:0px; }
+.dvtyip span.yzm img{ margin-top:6px;}
+.dvtyip span.yzmbtn{ width:55px; height:52px; background-position:-148px -300px; }
+.dvtyip span.yzmbtn a{ display:block; width:55px; height:52px;}
+.loginlf .jzpassword{ height:30px; line-height:30px; padding-left:85px; color:#666666; position:relative;}
+.loginlf .jzpassword input,.loginlf .jzpassword label{ vertical-align:middle;}
+.loginlf .jzpassword font{ font-size:12px; color:#69b3f2;}
+.loginlf .jzpassword a{ position:absolute; right:50px; top:0px; line-height:30px; color:#69b3f2;}
+.loginlf .dldv{ padding:15px 0 0 6px;}
+.loginlf .dldv input.loginbtn,.submit input.loginbtn{ width:290px; height:53px; background-image:url(../images/loginbtn.jpg); background-repeat:no-repeat; background-position:0px 0px; border:0px; cursor:pointer; margin-bottom:6px; font-size:22px; color:#ffffff; font-family:"Microsoft YaHei",微软雅黑;}
+.loginlf .dldv input.loginbtn:hover{ background-position:0 -62px;}
+.loginlf .dldv input.regbtn{ background-position:0 -60px;}
+.loginrg{ width:230px; float:left; margin-left:15px; display:inline;}
+.loginrg .dvtitle{ border-bottom:1px #c6cbcf solid; line-height:35px; color:#4f9ddd; padding:15px 0 0 5px; margin-bottom:40px;}
+.dvzc{ text-align:center;}
+.dvzc a{ display:inline-block; background:#0091cc; border-bottom:3px #006b97 solid; width:207px; height:48px; line-height:48px; color:#ffffff; border-radius:3px;}
+.dvzc a:hover{ background:#0083b8; text-decoration:none;}
+.font-size16{ font-size:16px;}
+.font-size18{ font-size:18px;}
+.tiku_mg{ margin-bottom:10px;}
+.loginbg{ background:#f3f3f3; padding:20px 0;}
+.regty input,.regty a{ float:left;}
+.regty .onShow{ margin:0 0 0 20px;}
+.regty a{ margin:2px 0 0 4px;}
+.regty{ padding:5px 0 0 0; height:30px;}
+.regty .onError,.regty .onFocus,.regty .onCorrect{ margin:0 0 0 20px;}
