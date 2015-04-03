@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>人事考试网</title>
+<title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
+<meta name="keywords" content="{$SEO['keyword']}">
+<meta name="description" content="{$SEO['description']}">
 <link type="text/css" rel="stylesheet" href="/statics/tiku/css/new_rsks.css" />
 </head>
 
@@ -18,9 +20,10 @@
         <div class="ct_new">
         	<h3><span>最新考试试题</span><a href="#" class="more">更多》</a></h3>
             <div class="zxkst">
-            	<p><a href="#">[执业药师历年真题]2015年三门峡市执业医师报考时间及报考条件</a></p>
-                <p><a href="#">[执业药师历年真题]2015年三门峡市执业医师报考时报考条件</a></p>
-                <p><a href="#">[执业药师历年真题]2015年三门峡市执业医师间及报考条件年三门峡市执</a></p>
+            {pc:content action="lists" catid="935" num="3" start="0"}
+             {loop $data $key $val}
+            	<p><a href="{$val[url]}" title="{$val['title']}" target="_blank"{title_style($val[style])}>{str_cut($val['title'],66,'')}</a></p>
+               {/loop}{/pc}
             </div>
             <div class="qhnewstitle" id="qhnewsA">
             	<a href="#" class="selected">执业药师考试历年真题</a><a href="#">执业药师考试习题</a><a href="#" style="margin-right:0px;">执业药师考试报名</a>
@@ -104,165 +107,27 @@
     <div class="rskstycut rskstymgbt15">执业药师考试题库</div>
     <div class="kstkdv">
     	<div class="tkleft" id="tktitleA">
-        	<a href="#" class="selected"><span>执业中药师考试题库</span></a>
-            <a href="#"><span>执业西药师考试题库</span></a>
-            <a href="#"><span>公卫执业助理医师资格</span></a>
-            <a href="#"><span>执业兽医资格</span></a>
-            <a href="#"><span>口腔执业医师资格</span></a>
-            <a href="#"><span>乡镇临床执业助理医师</span></a>
-            <a href="#"><span>中医执业医师资格</span></a>
+        {php $tikuList = subcat(935,0,0,$siteid);}
+         {loop $tikuList $r}
+        {php $num++}
+        	<a href="{$r[url]}" {if $num==1}class="selected"{/if}><span>{$r[catname]}</span></a>
+       {/loop}
             </ul>
         </div>
         <div class="tkright" id="tktitleDIV">
-        	<ul>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li class="ckmore"><a href="#">查看更多执业中药师题库>></a></li>
+        {php $num=0;}
+        {loop $tikuList $r}
+        {php $num++}
+        	<ul {if $num>1} style="display:none"{/if}>
+            
+             {pc:content action="lists" catid="$r[catid]" num="18" order="id DESC" return="info"}
+             {loop $info $v}
+                <li ><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],80)}</a><span><a href="{$v['url']}" target="_blank">[查看解析]</a></span></li>
+               {/loop}
+              {/pc}
+                <li class="ckmore"><a href="{$r[url]}">查看更多{$r[catname]}>></a></li>
             </ul>
-            <ul style="display:none;">
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li class="ckmore"><a href="#">查看更多执业中药师题库>></a></li>
-            </ul>
-            <ul style="display:none;">
-             	<li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-               
-                <li class="ckmore"><a href="#">查看更多执业中药师题库>></a></li>
-            </ul>
-            <ul style="display:none;">
-            	<li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-             	<li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li class="ckmore"><a href="#">查看更多执业中药师题库>></a></li>
-            </ul>
-            <ul style="display:none;">
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li class="ckmore"><a href="#">查看更多执业中药师题库>></a></li>
-            </ul>
-            <ul style="display:none;">
-             	<li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-               
-                <li class="ckmore"><a href="#">查看更多执业中药师题库>></a></li>
-            </ul>
-            <ul style="display:none;">
-            	<li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：隐藏当前工作薄中"二月"工</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Excel2003计算机应用能力考试：用快捷键打开帮助并搜索一个帮助</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-             	<li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：设置单元格的文本缩小字体填</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：将当前文档保存并设置文件的打开密</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">全国计算机考试Word2003试题：根据提示将公式补充完整</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">Word2003计算机应用考试真题：表格转换成文本并用逗号将单元格内</a><span><a href="#">[查看解析]</a></span></li>
-                <li><a href="#">2014年全国计算机Excel2003考试题：显示列表所有详细数据</a><span><a href="#">[查看解析]</a></span></li>
-                <li class="ckmore"><a href="#">查看更多执业中药师题库>></a></li>
-            </ul>
+            {/loop}
         </div>
         <div class="clear"></div>
     </div>

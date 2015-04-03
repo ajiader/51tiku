@@ -6,3 +6,4 @@
 *_notes*
 /sftp-config.json
 /phpsso_server/caches
+/phpcms/templates/tiku/member/login2.html
