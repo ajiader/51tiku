@@ -79,10 +79,12 @@
     <div class="rsksksdt rskstymgbt15">
         {pc:content action="lists" catid="933" num="6" start="0"}
         {loop $data $key $val}
-    	<div {if $key%2==0}class="ksznlist ksznmgrg"{else}class="ksznlist"{/if}>
+        
+    	<div {if $i%2==0}class="ksznlist ksznmgrg"{else}class="ksznlist"{/if}>
         	<h3><a href="{$val[url]}" title="{$val['title']}" target="_blank"{title_style($val[style])}>{str_cut($val['title'],90,'')}</a></h3>
             <p>{str_cut(trim($val['description']),'200')}<a href="{$val[url]}" target="_blank">[详情]</a></p>
         </div>
+        {$i++}
         {/loop}{/pc}
         
         <div class="clear"></div>

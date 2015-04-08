@@ -38,7 +38,7 @@ table { border-collapse:separate; border-spacing:0;}
 .rsksmenu .menutitle a:hover{ color:#008dc7;}
 .rsksmenu .nav_dh{ float:left; width:240px; border-left:1px #d9d9d9 solid; padding-left:30px;}
 .rsksmenu .nav_dh a{ display:inline-block; width:72px; margin-right:8px; text-align:center; height:26px; line-height:26px; margin-bottom:5px; font-weight:bold;}
-.rsksmenu .nav_dh a:hover{ background-color:#d20001; color:#ffffff; text-decoration:none;}
+.rsksmenu .nav_dh a:hover{ background-color:#008dc7; color:#ffffff; text-decoration:none;}
 .rskstymgbt15{ margin-bottom:15px;}
 .rskscontentone{ height:260px; overflow:hidden; }
 .rskscontentone .picqh{ width:300px; height:260px; overflow:hidden; position:relative; float:left;}
