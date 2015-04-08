@@ -26,26 +26,26 @@
                {/loop}{/pc}
             </div>
             <div class="qhnewstitle" id="qhnewsA">
-            	<a href="#" class="selected">执业药师考试历年真题</a><a href="#">执业药师考试习题</a><a href="#" style="margin-right:0px;">执业药师考试报名</a>
+            	<a href="#" class="selected">报名时间</a><a href="#">考试大纲</a><a href="#" style="margin-right:0px;">考试动态</a>
             </div>
             <div id="qhnewsDIV">
             	<ul>
-                	<li><a href="#">汇总：2014年全国各省计算机职</a></li><li><a href="#">2014职称计算机备考7大注意事项</a></li>
-                    <li><a href="#">全国职称计算机考试经验分享</a></li><li><a href="#">备考方式PK：选教材、网校、软</a></li>
-                    <li><a href="#">四川考生分享：高分通过职称计</a></li><li><a href="#">全国职称计算机考试科目（模块</a></li>
-                    <li><a href="#">全国计算机应用能力考试经验分</a></li><li><a href="#">2014年全国职称计算机考试复习</a></li>
+                	{pc:content action="lists" catid="929" num="8" start="0"}
+             		{loop $data $key $val}
+                	<li><a href="{$val[url]}" title="{$val['title']}" target="_blank"{title_style($val[style])}>{str_cut($val['title'],46,'')}</a></li>
+                    {/loop}{/pc}
                 </ul>
                 <ul style="display:none;">
-                    <li><a href="#">四川考生分享：高分通过职称计</a></li><li><a href="#">全国职称计算机考试科目（模块</a></li>
-                    <li><a href="#">全国计算机应用能力考试经验分</a></li><li><a href="#">2014年全国职称计算机考试复习</a></li>
-                    <li><a href="#">汇总：2014年全国各省计算机职</a></li><li><a href="#">2014职称计算机备考7大注意事项</a></li>
-                    <li><a href="#">全国职称计算机考试经验分享</a></li><li><a href="#">备考方式PK：选教材、网校、软</a></li>
+                    {pc:content action="lists" catid="931" num="8" start="0"}
+             		{loop $data $key $val}
+                	<li><a href="{$val[url]}" title="{$val['title']}" target="_blank"{title_style($val[style])}>{str_cut($val['title'],46,'')}</a></li>
+                    {/loop}{/pc}
                 </ul>
                 <ul style="display:none;">
-                	<li><a href="#">全国计算机应用能力考试经验分</a></li><li><a href="#">2014年全国职称计算机考试复习</a></li>
-                    <li><a href="#">汇总：2014年全国各省计算机职</a></li><li><a href="#">2014职称计算机备考7大注意事项</a></li>
-                    <li><a href="#">四川考生分享：高分通过职称计</a></li><li><a href="#">全国职称计算机考试科目（模块</a></li>
-                    <li><a href="#">全国职称计算机考试经验分享</a></li><li><a href="#">备考方式PK：选教材、网校、软</a></li>
+                	{pc:content action="lists" catid="932" num="8" start="0"}
+             		{loop $data $key $val}
+                	<li><a href="{$val[url]}" title="{$val['title']}" target="_blank"{title_style($val[style])}>{str_cut($val['title'],46,'')}</a></li>
+                    {/loop}{/pc}
                 </ul>
             </div>
         </div>
@@ -68,40 +68,23 @@
     <div class="rskstycut rskstymgbt15">考试动态<a href="#" class="more">更多执业医师考试资讯>></a></div>
     <div class="rsksksdt rskstymgbt15">
     	<ul>
-        	<li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a></li><li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a></li>
-            <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a></li><li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a></li>
-            <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a></li><li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a></li>
-            <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a></li><li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a></li>
-            <li><a href="#">计算机WindowsXP模块考试题库：结束"画图"程序任务</a></li><li><a href="#">计算机WindowsXP模块考试题库：隐藏窗口左侧的文件夹框</a></li>
+        	{pc:content action="lists" catid="932" num="8" start="0"}
+            {loop $data $key $val}
+        	<li><a href="{$val[url]}" title="{$val['title']}" target="_blank"{title_style($val[style])}>{str_cut($val['title'],90,'')}</a></li>
+            {/loop}{/pc}
         </ul>
         <div class="clear"></div>
     </div>
     <div class="rskstycut rskstymgbt15">考试指南</div>
     <div class="rsksksdt rskstymgbt15">
-    	<div class="ksznlist ksznmgrg">
-        	<h3>初级职称计算机考试如何备考？</h3>
-            <p>2010-2013年期间中级职称计算机考试难度不大，过关率也很高。不过2014年全国各地都采用了新题库，难度有所增加，尤其是正式考试...<a href="#">[详情]</a></p>
+        {pc:content action="lists" catid="933" num="6" start="0"}
+        {loop $data $key $val}
+    	<div {if $key%2==0}class="ksznlist ksznmgrg"{else}class="ksznlist"{/if}>
+        	<h3><a href="{$val[url]}" title="{$val['title']}" target="_blank"{title_style($val[style])}>{str_cut($val['title'],90,'')}</a></h3>
+            <p>{str_cut(trim($val['description']),'200')}<a href="{$val[url]}" target="_blank">[详情]</a></p>
         </div>
-        <div class="ksznlist">
-        	<h3>初级职称计算机考试如何备考？</h3>
-            <p>2010-2013年期间中级职称计算机考试难度不大，过关率也很高。不过2014年全国各地都采用了新题库，难度有所增加，尤其是正式考试...<a href="#">[详情]</a></p>
-        </div>
-        <div class="ksznlist ksznmgrg">
-        	<h3>初级职称计算机考试如何备考？</h3>
-            <p>2010-2013年期间中级职称计算机考试难度不大，过关率也很高。不过2014年全国各地都采用了新题库，难度有所增加，尤其是正式考试...<a href="#">[详情]</a></p>
-        </div>
-        <div class="ksznlist">
-        	<h3>初级职称计算机考试如何备考？</h3>
-            <p>2010-2013年期间中级职称计算机考试难度不大，过关率也很高。不过2014年全国各地都采用了新题库，难度有所增加，尤其是正式考试...<a href="#">[详情]</a></p>
-        </div>
-        <div class="ksznlist ksznmgrg">
-        	<h3>初级职称计算机考试如何备考？</h3>
-            <p>2010-2013年期间中级职称计算机考试难度不大，过关率也很高。不过2014年全国各地都采用了新题库，难度有所增加，尤其是正式考试...<a href="#">[详情]</a></p>
-        </div>
-        <div class="ksznlist">
-        	<h3>初级职称计算机考试如何备考？</h3>
-            <p>2010-2013年期间中级职称计算机考试难度不大，过关率也很高。不过2014年全国各地都采用了新题库，难度有所增加，尤其是正式考试...<a href="#">[详情]</a></p>
-        </div>
+        {/loop}{/pc}
+        
         <div class="clear"></div>
     </div>
     <div class="rskstycut rskstymgbt15">执业药师考试题库</div>
@@ -112,17 +95,16 @@
         {php $num++}
         	<a href="{$r[url]}" {if $num==1}class="selected"{/if}><span>{$r[catname]}</span></a>
        {/loop}
-            </ul>
         </div>
         <div class="tkright" id="tktitleDIV">
         {php $num=0;}
         {loop $tikuList $r}
         {php $num++}
         	<ul {if $num>1} style="display:none"{/if}>
-            
-             {pc:content action="lists" catid="$r[catid]" num="18" order="id DESC" return="info"}
-             {loop $info $v}
-                <li ><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],80)}</a><span><a href="{$v['url']}" target="_blank">[查看解析]</a></span></li>
+             {php $tikuList_tow = subcat($r['catid'],0,0,$siteid);}
+      {loop $tikuList_tow $val}
+                <li ><a href="{$val['url']}" target="_blank">{$val[catname]}</a><span><a href="{$val['url']}" target="_blank">[查看解析]</a></span></li>
+               
                {/loop}
               {/pc}
                 <li class="ckmore"><a href="{$r[url]}">查看更多{$r[catname]}>></a></li>

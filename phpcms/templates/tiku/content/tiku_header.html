@@ -19,7 +19,11 @@
     <div class="rsksmenu">
     	<div class="dvname"></div>
         <div class="menutitle">
-        	<a href="#">临床执业助理医师资格</a>/<a href="#">执业兽医资格</a>/<a href="#">乡镇临床执业助理医师</a>/<a href="#">中西医结合执业医师资格</a>/<a href="#">公卫执业医师资格</a>/<a href="#">公卫执业助理医师资格</a>/<a href="#">乡镇中医执业助理医师</a>/<a href="#">中医执业医师资格</a>/<a href="#">口腔执业医师资格</a>/<a href="#">中医执业助理医师资格</a><a href="#">临床执业助理医师资格</a>/<a href="#">执业兽医资格</a>
+        	{pc:content action="category" catid="935" num="10" siteid="$siteid" order="listorder ASC"}
+              {loop $data $r}
+              	<a href="{$r[url]}"><span>{$r[catname]}</span></a> / 
+                {/loop}
+              {/pc}
         </div>
         <div class="nav_dh">
         	<a href="http://www.renshikaoshi.net/jsj/" class="a1" target="_blank">职称计算机</a><a href="http://www.renshikaoshi.net/En/" target="_blank">职称英语</a><a  href="http://www.renshikaoshi.net/zyzg/zgl/rlzygls3/" target="_blank">人力资源师</a><a  href="http://www.renshikaoshi.net/zyzg/sf/sfks/" target="_blank" class="a1">司法考试</a><a href="http://www.renshikaoshi.net/zyzg/zgl/szzyhl/" target="_blank">深圳职员</a><a  href="http://www.renshikaoshi.net/zyzg/zgl/xlzxsej/" target="_blank">心理咨询师</a><a href="http://www.renshikaoshi.net/news/" target="_blank">报名速递</a><a href="/" target="_blank">返回首页</a>
