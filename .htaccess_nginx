@@ -1,10 +1,10 @@
 
 default_type   text/html;
-#·ÀÖ¹sql×¢Èë
+#é˜²æ­¢sqlæ³¨å…¥
 if ($request_uri ~* (.*)(Field=Keywor|insert|[+|(%20)]select[+|(%20)]|[+|(%20)]delete[+|(%20)]|[+|(%20)]update[+|(%20)]|(cost\()|(concat\()|union|[+|(%20)]count[+|(%20)]|\*|master|truncate|declare|\'|\;|[+|(%20)]and[+|(%20)]|[+|(%20)]or[+|(%20)]|exec)(.*)$ ) {
 return 404;
 }
-#ÉÏ´«Ä¿Â¼½ûÖ¹Ö´ĞĞphp
+#ä¸Šä¼ ç›®å½•ç¦æ­¢æ‰§è¡Œphp
 location ~ ^/(statics|uploadfile|phpsso_server/uploadfile|cxb/images)/ {
     if ($request_uri ~* (.*)(php|php5|Php|PHp|PHP|phP|pHP|PhP)(.*)$ ) {
       return 404;
@@ -20,16 +20,19 @@ location ~ /\.ht {
     return 404;
     #deny  all; 
 } 
+location ~ /\.git { 
+    return 404;
+    #deny  all; 
+} 
 
-
-#Èç¹ûÊÇÄ¿Â¼×Ô¶¯¼ÓĞ±¸Ü
+#å¦‚æœæ˜¯ç›®å½•è‡ªåŠ¨åŠ æ–œæ 
 if (-d $request_filename) {
 rewrite ^/(.*)([^/])$ http://$host/$1$2/ permanent;
 }
 
 
 
-#ËùÓĞ¾²Ì¬ÎÄ¼ş¶¼ÓÉnginx´¦Àí£¬²¢ÓÃgzipÑ¹ËõÊä³ö
+#æ‰€æœ‰é™æ€æ–‡ä»¶éƒ½ç”±nginxå¤„ç†ï¼Œå¹¶ç”¨gzipå‹ç¼©è¾“å‡º
 location ~* \.(jpg|jpeg|png|gif|css|js|swf|mp3|avi|flv|xml|zip|rar)$ {
         expires 7d;
         gzip on;
@@ -37,7 +40,7 @@ location ~* \.(jpg|jpeg|png|gif|css|js|swf|mp3|avi|flv|xml|zip|rar)$ {
 	error_page 403 404 /404-1.php;
 }
 location ~ ^/NginxStatus/ { 
-	    stub_status on; #Nginx ×´Ì¬¼à¿ØÅäÖÃ
+	    stub_status on; #Nginx çŠ¶æ€ç›‘æ§é…ç½®
 	    access_log off;
 	 } 
 
@@ -64,24 +67,24 @@ location / {
                          #set $memc_exptime 24;
                         # memc_pass mem_backend;
 
-#Õ¾µãµØÍ¼
+#ç«™ç‚¹åœ°å›¾
 rewrite ^/sitemaps.html$  /goshouye.php?m=content&c=index&a=sitemaps last;
-#×Ô¶¨Òå±íµ¥Ò³Ãæ
+#è‡ªå®šä¹‰è¡¨å•é¡µé¢
 rewrite ^/(.*)_form.html$ /goshouye.php?m=content&c=index&a=formpost&typeurl=$1&$query_string last;
 
 
 
-#ÄÚÈİÒ³
+#å†…å®¹é¡µ
 rewrite ^/tiku-([0-9]+)-([0-9]+)-([0-9]+).html /goshouye.php?m=content&c=index&a=show&catid=$1&id=$2&page=$3 last; 
 #rewrite ^/content-([0-9]+)-([0-9]+)-([0-9]+).html /goshouye.php?m=content&c=index&a=show&catid=$1&id=$2&page=$3 last; 
 
 
 	if (!-e $request_filename) {
-	#µØ·½Õ¾ 31Ê¡ÊĞ
+	#åœ°æ–¹ç«™ 31çœå¸‚
 	rewrite ^/(En|jsj)/beijing$ /goshouye.php?m=content&c=city&pinyin=beijing&catdir=$1 last;
         rewrite ^/(En|jsj)/(beijing|shanghai|tianjin|chongqing|hebei|shanxi|neimenggu|liaoning|jilin|heilongjiang|jiangshu|zhejiang|anhui|fujian|jiangxi|shandong|henan|hubei|hunan|guangdong|guangxi|hainan|sichuan|guizhou|yunnan|xizang|shanxis|gansu|qinghai|ningxia|xinjiang)(.*)/$ /goshouye.php?m=content&c=city&pinyin=$2$3&catdir=$1 last;
 
-	#À¸Ä¿Î±¾²Ì¬
+	#æ ç›®ä¼ªé™æ€
 	rewrite ^/(En|jsj|zyzg)(.*)/(.*)/list.html$ /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&$query_string last; 
   rewrite ^/(En|jsj|zyzg)(.*)/(.*)/m([0-9]+)_t([0-9]+)_([0-9]+).html /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&mid=$4&typeid=$5&page=$6 last;
   rewrite ^/(En|jsj|zyzg)(.*)/(.*)/m(.*)_t([0-9]+)_([0-9]+).html /goshouye.php?m=content&c=index&a=lists&categorydir=$1$2/&catdir=$3&mpinyin=$4&typeid=$5&page=$6 last;
@@ -102,15 +105,15 @@ rewrite ^/list-([0-9]+)-([0-9]+).html /goshouye.php?m=content&c=index&a=lists&ca
 rewrite ^/comment-([0-9]+)-([0-9]+)-([0-9]+).html /goshouye.php?m=comment&c=index&a=init&commentid=content_$1-$2-$3 last;
 
 
-#tags¹Ø¼ü´Ê
+#tagså…³é”®è¯
 rewrite ^/tags-(.*)_([0-9]+)_([0-9]+).html /goshouye.php?m=content&c=tag&catid=$2&tag=$1&page=$3 last;
 
 
 
-#×Ô¶¨ÒåseoÍÆ¹ãÒ³Ãæ
+#è‡ªå®šä¹‰seoæ¨å¹¿é¡µé¢
 rewrite ^/r/(.*)/ /goshouye.php?m=diypage&c=index&a=init&dirname=$1 last;
 
-#ajaxÒ³Ãæµ÷ÓÃ
+#ajaxé¡µé¢è°ƒç”¨
 rewrite ^/ajax_(.*)_([0-9]+)-([0-9]+).html /goshouye.php?m=ajax&a=$1&catid=$2&page=$3 last;
 rewrite ^/ajax_(.*).html /goshouye.php?m=ajax&a=$1 last;
 rewrite ^/kscount_([0-9]+)_([0-9]+).html$  /kapi.php?op=count&id=$1&modelid=$2 last;
